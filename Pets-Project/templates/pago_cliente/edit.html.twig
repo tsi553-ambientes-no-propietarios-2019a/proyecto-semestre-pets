@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar PagoCliente{% endblock %}
+
+{% block body %}
+    {{ parent()}}
+<div class="container text-center">
+    
+    <div class="row justify-content-md-center">
+        <div class="col-md-auto">
+        <h1>Editar Pago Cliente</h1>
+        {{ include('pago_cliente/_form.html.twig', {'button_label': 'Update'}) }}
+        </div>
+    </div>
+    <br>
+    <div class="row justify-content-md-center">
+        <div class="col-md-2">
+        <a href="{{ path('pago_cliente_index') }}" class="btn btn-info btn-lg">back to list</a>
+        </div>
+        <div class="col-md-2">
+        {{ include('pago_cliente/_delete_form.html.twig') }}
+        </div>
+    </div>
+</div>
+{% endblock %}

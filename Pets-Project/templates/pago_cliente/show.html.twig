@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PagoCliente{% endblock %}
+
+{% block body %}
+    {{ parent()}}
+<div class="container">
+
+<div class="row justify-content-md-center">
+    <div class="col-md-5">
+    <h1 class="text-center">Pago Cliente</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ pago_cliente.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ pago_cliente.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Apellido</th>
+                <td>{{ pago_cliente.apellido }}</td>
+            </tr>
+            <tr>
+                <th>Create_at</th>
+                <td>{{ pago_cliente.createAt ? pago_cliente.createAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <div class="row justify-content-md-center">
+        <div class="col-md-5">
+            <a href="{{ path('pago_cliente_index') }}" class="btn btn-info btn-lg">back to list</a>
+        </div>
+        <div class="col-md-3">
+            <a href="{{ path('pago_cliente_edit', {'id': pago_cliente.id}) }}" class="btn btn-info btn-lg">edit</a>
+        </div>
+        <div class="col-md-3">
+            {{ include('pago_cliente/_delete_form.html.twig') }}
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+{% endblock %}

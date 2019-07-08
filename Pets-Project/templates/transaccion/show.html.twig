@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Transaccion{% endblock %}
+
+{% block body %}
+    {{ parent()}}
+<div class="container">
+    <h1>Transaccion</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ transaccion.id }}</td>
+            </tr>
+            <tr>
+                <th>Producto</th>
+                <td>{{ transaccion.producto }}</td>
+            </tr>
+            <tr>
+                <th>Monto</th>
+                <td>{{ transaccion.monto }}</td>
+            </tr>
+            <tr>
+                <th>Divisa</th>
+                <td>{{ transaccion.divisa }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ transaccion.estado }}</td>
+            </tr>
+            <tr>
+                <th>Create_at</th>
+                <td>{{ transaccion.createAt ? transaccion.createAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('transaccion_index') }}">back to list</a>
+
+    <a href="{{ path('transaccion_edit', {'id': transaccion.id}) }}">edit</a>
+
+    {{ include('transaccion/_delete_form.html.twig') }}
+</div>
+{% endblock %}

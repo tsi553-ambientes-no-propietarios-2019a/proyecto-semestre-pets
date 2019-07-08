@@ -27,7 +27,7 @@ class Transaccion
     private $monto;
 
     /**
-     * @ORM\Column(type="string", length=25)
+     * @ORM\Column(type="string", length=10)
      */
     private $divisa;
 
@@ -45,7 +45,7 @@ class Transaccion
      * @ORM\ManyToOne(targetEntity="App\Entity\PagoCliente", inversedBy="transaccions")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $pagoCliente;
+    private $transaccion;
 
     public function getId(): ?int
     {
@@ -112,14 +112,14 @@ class Transaccion
         return $this;
     }
 
-    public function getPagoCliente(): ?PagoCliente
+    public function getTransaccion(): ?PagoCliente
     {
-        return $this->pagoCliente;
+        return $this->transaccion;
     }
 
-    public function setPagoCliente(?PagoCliente $pagoCliente): self
+    public function setTransaccion(?PagoCliente $transaccion): self
     {
-        $this->pagoCliente = $pagoCliente;
+        $this->transaccion = $transaccion;
 
         return $this;
     }

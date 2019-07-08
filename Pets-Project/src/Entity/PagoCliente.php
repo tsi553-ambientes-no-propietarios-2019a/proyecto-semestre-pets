@@ -19,7 +19,7 @@ class PagoCliente
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=25, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $nombre;
 
@@ -31,10 +31,10 @@ class PagoCliente
     /**
      * @ORM\Column(type="datetime")
      */
-    private $created_at;
+    private $create_at;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Transaccion", mappedBy="pagoCliente")
+     * @ORM\OneToMany(targetEntity="App\Entity\Transaccion", mappedBy="transaccion")
      */
     private $transaccions;
 
@@ -53,7 +53,7 @@ class PagoCliente
         return $this->nombre;
     }
 
-    public function setNombre(?string $nombre): self
+    public function setNombre(string $nombre): self
     {
         $this->nombre = $nombre;
 
@@ -72,14 +72,14 @@ class PagoCliente
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreateAt(): ?\DateTimeInterface
     {
-        return $this->created_at;
+        return $this->create_at;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): self
+    public function setCreateAt(\DateTimeInterface $create_at): self
     {
-        $this->created_at = $created_at;
+        $this->create_at = $create_at;
 
         return $this;
     }
@@ -96,7 +96,7 @@ class PagoCliente
     {
         if (!$this->transaccions->contains($transaccion)) {
             $this->transaccions[] = $transaccion;
-            $transaccion->setPagoCliente($this);
+            $transaccion->setTransaccion($this);
         }
 
         return $this;
@@ -107,8 +107,8 @@ class PagoCliente
         if ($this->transaccions->contains($transaccion)) {
             $this->transaccions->removeElement($transaccion);
             // set the owning side to null (unless already changed)
-            if ($transaccion->getPagoCliente() === $this) {
-                $transaccion->setPagoCliente(null);
+            if ($transaccion->getTransaccion() === $this) {
+                $transaccion->setTransaccion(null);
             }
         }
 
