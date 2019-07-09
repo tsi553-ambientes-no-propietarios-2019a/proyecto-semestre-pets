@@ -5,7 +5,7 @@
 {% block body %}
     {{ parent()}}
 <div class="container">
-    <h1>Transaccion index</h1>
+    <h1 class="text-center">Transaccion index</h1>
 
     <table class="table">
         <thead>
@@ -41,6 +41,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('transaccion_new') }}">Create new</a>
+    <a href="{{ path('transaccion_new') }}" class="btn btn-primary">Create new</a>
 </div>
 {% endblock %}

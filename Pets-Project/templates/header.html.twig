@@ -1,11 +1,30 @@
-<div class="cover-container w-100 h-100 p-3 mx-auto flex-column">
-  <header class="mb-auto p-3 mb-2 text-white">
-    <div class="text-white">
-        <nav class="navbar navbar-dark bg-dark justify-content-center">
-          <a class="nav-link active" href="{{path('home')}}">Home</a>
-          <a class="nav-link" href="{{path('pago_cliente_index')}}">Pagos en linea</a>
-          <a class="nav-link" href="{{path('transaccion_index')}}">Transacciones</a>
-        </nav>
+<div class="cover-container mx-auto flex-column">
+  <div class="row navbar-dark bg-dark">
+    <div class="col-sm">
+      <nav class="navbar">
+        <a class="navbar-brand" href="{{path('home')}}">PETS Travel</a>
+      </nav>
     </div>
-  </header>
+    <div class="col-sm">
+      <nav class="navbar">
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </nav>
+    </div>
+    <div class="col-md">
+    <nav class="navbar navbar-expand-lg">
+      <div class="collapse navbar-collapse">
+        <div class="navbar-nav justify-content-end">
+          <a class="nav-item nav-link active" href="{{path('home')}}">Home</a>
+          <a class="nav-item nav-link" href="{{path('pago_cliente_index')}}">Pagos</a>
+          <a class="nav-item nav-link" href="{{path('transaccion_index')}}">Transacciones</a>
+          <a class="nav-item nav-link" href="{{path('transaccion_index')}}">Inicio Sesion</a>
+        </div>
+      </div>
+    </div>
+    </nav
+  </div>
 </div>
+<br>

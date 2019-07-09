@@ -5,11 +5,11 @@
 {% block body %}
     {{ parent()}}
 <div class="container">
-    <h1>Edit Transaccion</h1>
+    <h1>Editar Transaccion</h1>
 
     {{ include('transaccion/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('transaccion_index') }}">back to list</a>
+    <a href="{{ path('transaccion_index') }}" class="btn btn-info">back to list</a>
 
     {{ include('transaccion/_delete_form.html.twig') }}
 </div>
