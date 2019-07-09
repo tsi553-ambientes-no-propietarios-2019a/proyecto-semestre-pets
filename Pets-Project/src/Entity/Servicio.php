@@ -32,6 +32,12 @@ class Servicio
      */
     private $Servicio_Paquete;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\PagoCliente", inversedBy="Id_Servicio")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $pagoCliente;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +75,18 @@ class Servicio
     public function setServicioPaquete(?Paquete $Servicio_Paquete): self
     {
         $this->Servicio_Paquete = $Servicio_Paquete;
+
+        return $this;
+    }
+
+    public function getPagoCliente(): ?PagoCliente
+    {
+        return $this->pagoCliente;
+    }
+
+    public function setPagoCliente(?PagoCliente $pagoCliente): self
+    {
+        $this->pagoCliente = $pagoCliente;
 
         return $this;
     }

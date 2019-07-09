@@ -38,9 +38,15 @@ class PagoCliente
      */
     private $transaccions;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Servicio", mappedBy="pagoCliente")
+     */
+    private $Id_Servicio;
+
     public function __construct()
     {
         $this->transaccions = new ArrayCollection();
+        $this->Id_Servicio = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -109,6 +115,37 @@ class PagoCliente
             // set the owning side to null (unless already changed)
             if ($transaccion->getTransaccion() === $this) {
                 $transaccion->setTransaccion(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Servicio[]
+     */
+    public function getIdServicio(): Collection
+    {
+        return $this->Id_Servicio;
+    }
+
+    public function addIdServicio(Servicio $idServicio): self
+    {
+        if (!$this->Id_Servicio->contains($idServicio)) {
+            $this->Id_Servicio[] = $idServicio;
+            $idServicio->setPagoCliente($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIdServicio(Servicio $idServicio): self
+    {
+        if ($this->Id_Servicio->contains($idServicio)) {
+            $this->Id_Servicio->removeElement($idServicio);
+            // set the owning side to null (unless already changed)
+            if ($idServicio->getPagoCliente() === $this) {
+                $idServicio->setPagoCliente(null);
             }
         }
 

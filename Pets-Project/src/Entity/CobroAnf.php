@@ -21,6 +21,12 @@ class CobroAnf
      */
     private $comision;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Transaccion", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Id_Transaccion;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -34,6 +40,18 @@ class CobroAnf
     public function setComision(string $comision): self
     {
         $this->comision = $comision;
+
+        return $this;
+    }
+
+    public function getIdTransaccion(): ?Transaccion
+    {
+        return $this->Id_Transaccion;
+    }
+
+    public function setIdTransaccion(Transaccion $Id_Transaccion): self
+    {
+        $this->Id_Transaccion = $Id_Transaccion;
 
         return $this;
     }
