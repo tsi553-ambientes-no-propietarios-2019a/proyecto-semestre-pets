@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Servicio{% endblock %}
+
+{% block body %}
+    <h1>Servicio</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ servicio.id }}</td>
+            </tr>
+            <tr>
+                <th>Start_Time</th>
+                <td>{{ servicio.StartTime ? servicio.StartTime|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Time_end</th>
+                <td>{{ servicio.timeEnd ? servicio.timeEnd|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('servicio_index') }}">back to list</a>
+
+    <a href="{{ path('servicio_edit', {'id': servicio.id}) }}">edit</a>
+
+    {{ include('servicio/_delete_form.html.twig') }}
+{% endblock %}

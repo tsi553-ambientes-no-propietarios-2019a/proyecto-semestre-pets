@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Servicio index{% endblock %}
+
+{% block body %}
+    <h1>Servicio index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Start_Time</th>
+                <th>Time_end</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for servicio in servicios %}
+            <tr>
+                <td>{{ servicio.id }}</td>
+                <td>{{ servicio.StartTime ? servicio.StartTime|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ servicio.timeEnd ? servicio.timeEnd|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('servicio_show', {'id': servicio.id}) }}">show</a>
+                    <a href="{{ path('servicio_edit', {'id': servicio.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('servicio_new') }}">Create new</a>
+{% endblock %}
