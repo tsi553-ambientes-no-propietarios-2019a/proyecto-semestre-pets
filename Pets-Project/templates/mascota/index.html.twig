@@ -4,11 +4,31 @@
 
 {% block body %}
 {{parent()}}
-<div class="container">
-    <h1> <center> Bienvenido a Mascotas </center> </h1>
 
-    <table class="table">
-        <thead>
+    <body>
+
+  
+
+    <!-- Jumbotron Header -->
+<header ">
+    <center>
+      <h1 class="display-3">Bienvenido a Mascotas!</h1>
+      <img src="{{ asset('img/mascota/index.jpg')}}" class="d-block w-50" alt="...">
+      
+ 
+    <div class="container">
+            <a href="{{ path('mascota_new') }}">
+            <button type="button" class="btn btn-primary">Ingrese los datos de su mascota</button>
+            </a>
+    </div>
+    
+    </center>
+</header>
+<div class="cover-container w-80 h-80 p-5">
+<div style="text-align:center;">
+    
+    <table class="table table-borderless style="text-align:center">
+        <thead class="thead-dark">
             <tr>
                 <th>Id</th>
                 <th>Name</th>
@@ -26,20 +46,43 @@
                 <td>{{ mascotum.Type }}</td>
                 <td>{{ mascotum.age }}</td>
                 <td>{{ mascotum.raza }}</td>
+
+
                 <td>
-                    <a href="{{ path('mascota_show', {'id': mascotum.id}) }}">show</a>
-                    <a href="{{ path('mascota_edit', {'id': mascotum.id}) }}">edit</a>
+                    
+                    <a href="{{ path('mascota_show', {'id': mascotum.id}) }}">
+                    <button type="button" class="btn btn-info">Mirar</button>
+                    
+                    </a>
+                    <a href="{{ path('mascota_edit', {'id': mascotum.id}) }}">
+                    <button type="button" class="btn btn-success">Editar</button>
+                    </a>
+                    
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">Aún no has ingresado datos</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('mascota_new') }}">crear nuevo</a>
-    
     </div>
+    
+    
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 {% endblock %}
