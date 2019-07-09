@@ -43,6 +43,12 @@ class Paquete
      */
     private $servicios;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Anfitrion", inversedBy="Id_adfitrion")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $anfitrion;
+
     public function __construct()
     {
         $this->servicios = new ArrayCollection();
@@ -128,6 +134,18 @@ class Paquete
                 $servicio->setServicioPaquete(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAnfitrion(): ?Anfitrion
+    {
+        return $this->anfitrion;
+    }
+
+    public function setAnfitrion(?Anfitrion $anfitrion): self
+    {
+        $this->anfitrion = $anfitrion;
 
         return $this;
     }
