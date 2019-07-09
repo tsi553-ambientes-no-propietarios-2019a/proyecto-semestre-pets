@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paquete{% endblock %}
+
+{% block body %}
+ {{ parent()}}
+    <h1>Paquete</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ paquete.id }}</td>
+            </tr>
+            <tr>
+                <th>Tipo_Masc</th>
+                <td>{{ paquete.TipoMasc }}</td>
+            </tr>
+            <tr>
+                <th>Alimento</th>
+                <td>{{ paquete.Alimento }}</td>
+            </tr>
+            <tr>
+                <th>Aseo_Masc</th>
+                <td>{{ paquete.AseoMasc }}</td>
+            </tr>
+            <tr>
+                <th>Precio</th>
+                <td>{{ paquete.Precio }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('paquete_index') }}">back to list</a>
+
+    <a href="{{ path('paquete_edit', {'id': paquete.id}) }}">edit</a>
+
+    {{ include('paquete/_delete_form.html.twig') }}
+{% endblock %}
