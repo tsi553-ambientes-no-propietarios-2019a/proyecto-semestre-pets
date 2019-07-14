@@ -1,8 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bienvenido!{% endblock %}
+{% block title %}PETS{% endblock %}
 
 {% block body %}
     {{ parent()}}
-    {{ include('main.html.twig')}}
+
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ asset('img/carousel/carusel1.jpg')}}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+            <img src="{{ asset('img/carousel/carusel2.jpg')}}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+            <img src="{{ asset('img/carousel/carusel3.jpg')}}" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        </div>
+        <div class="cover-container w-100 h-100 p-5 text-center">
+            <main role="main" class="inner cover">
+                <h1 class="cover-heading">Cover your page.</h1>
+                <p class="lead">El Kev for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+                <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
+                </p>
+            </main>
+        </div>
 {% endblock %}
+
