@@ -9,7 +9,7 @@ security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         fos_userbundle:
-            id: fos_user.user_provider.username_email
+            id: fos_user.user_provider.username
 
     firewalls:
         dev:
@@ -28,7 +28,6 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/registro, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/recuperar-clave, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/perfil/, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }

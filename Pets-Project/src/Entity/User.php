@@ -1,11 +1,12 @@
 <?php
 // src/Entity/User.php
+
 namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
@@ -54,14 +55,8 @@ class User extends BaseUser
 
     public function getName(): ?string
     {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
+        parent::__construct();
+        // your own logic
     }
 
     /**
