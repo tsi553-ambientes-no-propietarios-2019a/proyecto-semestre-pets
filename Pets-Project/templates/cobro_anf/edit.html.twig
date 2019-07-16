@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit CobroAnf{% endblock %}
+
+{% block body %}
+    <h1>Edit CobroAnf</h1>
+
+    {{ include('cobro_anf/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('cobro_anf_index') }}">back to list</a>
+
+    {{ include('cobro_anf/_delete_form.html.twig') }}
+{% endblock %}

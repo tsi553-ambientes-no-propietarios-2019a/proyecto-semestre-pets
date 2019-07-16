@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Anfitrion{% endblock %}
+
+{% block body %}
+    <h1>Anfitrion</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ anfitrion.id }}</td>
+            </tr>
+            <tr>
+                <th>Cuenta</th>
+                <td>{{ anfitrion.cuenta }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('anfitrion_index') }}">back to list</a>
+
+    <a href="{{ path('anfitrion_edit', {'id': anfitrion.id}) }}">edit</a>
+
+    {{ include('anfitrion/_delete_form.html.twig') }}
+{% endblock %}
