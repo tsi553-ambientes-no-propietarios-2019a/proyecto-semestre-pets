@@ -12,14 +12,9 @@ class ServicioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-<<<<<<< HEAD
             ->add('Hora_Inicio')
             ->add('Hora_Fin')
             ->add('Servicio_Paquete')
-=======
-            ->add('Start_Time')
-            ->add('time_end')
->>>>>>> 9290f0b2ebcdca55e13e8378efaa9b2fc905c190
         ;
     }
 
