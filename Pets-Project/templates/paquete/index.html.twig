@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paquete index{% endblock %}
+
+{% block body %}
+{{ parent()}}
+
+    <h1>Paquete index</h1>
+ <div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Tipo_Masc</th>
+                <th>Alimento</th>
+                <th>Aseo_Masc</th>
+                <th>Precio</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for paquete in paquetes %}
+            <tr>
+                <td>{{ paquete.id }}</td>
+                <td>{{ paquete.TipoMasc }}</td>
+                <td>{{ paquete.Alimento }}</td>
+                <td>{{ paquete.AseoMasc }}</td>
+                <td>{{ paquete.Precio }}</td>
+                <td>
+                    <a href="{{ path('paquete_show', {'id': paquete.id}) }}">show</a>
+                    <a href="{{ path('paquete_edit', {'id': paquete.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('paquete_new') }}" class = "btn btn-success">Create new</a>
+    </div>
+{% endblock %}

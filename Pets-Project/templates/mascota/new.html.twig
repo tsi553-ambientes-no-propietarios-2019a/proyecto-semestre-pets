@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nueva Mascota{% endblock %}
+
+{% block body %}
+{{parent()}}
+<div class="container">
+    <h1> <center> Ingresar Mascota </center> </h1>
+
+    {{ include('mascota/_form.html.twig') }}
+
+    <a href="{{ path('mascota_index') }}">
+     <button style=color:pink class="btn btn-secondary">{{ button_label|default('volver') }}</button>
+    </a>
+    </div>
+{% endblock %}

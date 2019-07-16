@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Mascota{% endblock %}
+
+{% block body %}
+{{parent()}}
+<div class="container">
+    <h1> <center> Edit Mascota </center> </h1>
+
+    {{ include('mascota/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('mascota_index') }}">back to list</a>
+
+    {{ include('mascota/_delete_form.html.twig') }}
+    </div>
+{% endblock %}
