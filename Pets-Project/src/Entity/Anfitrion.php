@@ -34,6 +34,12 @@ class Anfitrion
      */
     private $Id_adfitrion;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="anfitrion", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $anfitrion;
+
     public function __construct()
     {
         $this->Id_adfitrion = new ArrayCollection();
@@ -95,6 +101,18 @@ class Anfitrion
                 $idAdfitrion->setAnfitrion(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAnfitrion(): ?User
+    {
+        return $this->anfitrion;
+    }
+
+    public function setAnfitrion(User $anfitrion): self
+    {
+        $this->anfitrion = $anfitrion;
 
         return $this;
     }

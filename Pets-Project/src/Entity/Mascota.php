@@ -36,6 +36,12 @@ class Mascota
      */
     private $raza;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="mascota")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $mascota;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,6 +91,18 @@ class Mascota
     public function setRaza(string $raza): self
     {
         $this->raza = $raza;
+
+        return $this;
+    }
+
+    public function getMascota(): ?User
+    {
+        return $this->mascota;
+    }
+
+    public function setMascota(?User $mascota): self
+    {
+        $this->mascota = $mascota;
 
         return $this;
     }
