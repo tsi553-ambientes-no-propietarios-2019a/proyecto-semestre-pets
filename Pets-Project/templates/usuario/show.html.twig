@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Usuario{% endblock %}
+
+{% block body %}
+{{parent()}}
+
+    <h1>Usuario</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ usuario.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ usuario.Nombre }}</td>
+            </tr>
+            <tr>
+                <th>Usuario</th>
+                <td>{{ usuario.Usuario }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ usuario.Password }}</td>
+            </tr>
+            <tr>
+                <th>Correo</th>
+                <td>{{ usuario.Correo }}</td>
+            </tr>
+            <tr>
+                <th>Celular</th>
+                <td>{{ usuario.Celular }}</td>
+            </tr>
+            <tr>
+                <th>Telefono</th>
+                <td>{{ usuario.Telefono }}</td>
+            </tr>
+            <tr>
+                <th>Direccion</th>
+                <td>{{ usuario.Direccion }}</td>
+            </tr>
+            <tr>
+                <th>Estado_Cli</th>
+                <td>{{ usuario.EstadoCli }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('usuario_index') }}">back to list</a>
+
+    <a href="{{ path('usuario_edit', {'id': usuario.id}) }}">edit</a>
+
+    {{ include('usuario/_delete_form.html.twig') }}
+{% endblock %}

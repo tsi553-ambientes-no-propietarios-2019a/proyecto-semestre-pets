@@ -2,31 +2,31 @@
 
 namespace App\Form;
 
-use App\Entity\Servicio;
+use App\Entity\Usuario;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ServicioType extends AbstractType
+class UsuarioType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-<<<<<<< HEAD
-            ->add('Hora_Inicio')
-            ->add('Hora_Fin')
-            ->add('Servicio_Paquete')
-=======
-            ->add('Start_Time')
-            ->add('time_end')
->>>>>>> 9290f0b2ebcdca55e13e8378efaa9b2fc905c190
+            ->add('Nombre')
+            ->add('Usuario')
+            ->add('Password')
+            ->add('Correo')
+            ->add('Celular')
+            ->add('Telefono')
+            ->add('Direccion')
+            ->add('Estado_Cli')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Servicio::class,
+            'data_class' => Usuario::class,
         ]);
     }
 }
