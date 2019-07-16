@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CobroAnf index{% endblock %}
+
+{% block body %}
+    <h1>CobroAnf index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Comision</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cobro_anf in cobro_anfs %}
+            <tr>
+                <td>{{ cobro_anf.id }}</td>
+                <td>{{ cobro_anf.comision }}</td>
+                <td>
+                    <a href="{{ path('cobro_anf_show', {'id': cobro_anf.id}) }}">show</a>
+                    <a href="{{ path('cobro_anf_edit', {'id': cobro_anf.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('cobro_anf_new') }}">Create new</a>
+{% endblock %}

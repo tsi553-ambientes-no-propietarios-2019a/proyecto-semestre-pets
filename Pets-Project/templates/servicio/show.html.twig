@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Servicio{% endblock %}
+
+<<<<<<< HEAD
+{% block body %}}
+ {{ parent()}}
+=======
+{% block body %}
+>>>>>>> 9290f0b2ebcdca55e13e8378efaa9b2fc905c190
+    <h1>Servicio</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ servicio.id }}</td>
+            </tr>
+            <tr>
+<<<<<<< HEAD
+                <th>Hora_Inicio</th>
+                <td>{{ servicio.HoraInicio ? servicio.HoraInicio|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Hora_Fin</th>
+                <td>{{ servicio.HoraFin ? servicio.HoraFin|date('Y-m-d H:i:s') : '' }}</td>
+=======
+                <th>Start_Time</th>
+                <td>{{ servicio.StartTime ? servicio.StartTime|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Time_end</th>
+                <td>{{ servicio.timeEnd ? servicio.timeEnd|date('Y-m-d H:i:s') : '' }}</td>
+>>>>>>> 9290f0b2ebcdca55e13e8378efaa9b2fc905c190
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('servicio_index') }}">back to list</a>
+
+    <a href="{{ path('servicio_edit', {'id': servicio.id}) }}">edit</a>
+
+    {{ include('servicio/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mascota{% endblock %}
+
+{% block body %}
+{{parent()}}
+<div class="container">
+    <h1> <center> Mascota </center> </h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ mascotum.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ mascotum.name }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ mascotum.Type }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ mascotum.age }}</td>
+            </tr>
+            <tr>
+                <th>Raza</th>
+                <td>{{ mascotum.raza }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('mascota_index') }}">back to list</a>
+
+    <a href="{{ path('mascota_edit', {'id': mascotum.id}) }}">edit</a>
+
+    {{ include('mascota/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

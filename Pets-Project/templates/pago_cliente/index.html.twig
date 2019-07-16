@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}PagoCliente index{% endblock %}
+{% block title %}Pagos{% endblock %}
 
 {% block body %}
     {{ parent()}}
@@ -13,8 +13,8 @@
                 <th>Id</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
-                <th>Create_at</th>
-                <th>actions</th>
+                <th>fecha de creación</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -31,13 +31,13 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">No existen registros</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
     <br>
-    <a href="{{ path('pago_cliente_new') }}" class="btn btn-info btn-lg">Create new</a>
+    <a href="{{ path('pago_cliente_new') }}" class="btn btn-info btn-lg">Ingresar nuevo</a>
 </div>
 {% endblock %}
 
