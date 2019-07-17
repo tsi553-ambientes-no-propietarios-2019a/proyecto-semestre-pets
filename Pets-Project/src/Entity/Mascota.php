@@ -37,10 +37,10 @@ class Mascota
     private $raza;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="mascota")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="mascotas")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $mascota;
+    private $user;
 
     public function getId(): ?int
     {
@@ -95,14 +95,14 @@ class Mascota
         return $this;
     }
 
-    public function getMascota(): ?User
+    public function getUser(): ?User
     {
-        return $this->mascota;
+        return $this->user;
     }
 
-    public function setMascota(?User $mascota): self
+    public function setUser(?User $user): self
     {
-        $this->mascota = $mascota;
+        $this->user = $user;
 
         return $this;
     }

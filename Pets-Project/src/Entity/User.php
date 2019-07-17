@@ -25,15 +25,6 @@ class User extends BaseUser
      */
     private $name;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Mascotas", mappedBy="mascota")
-     */
-    private $mascotas;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Servicios", mappedBy="servicio")
-     */
-    private $servicios;
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Anfitrion", mappedBy="anfitrion", cascade={"persist", "remove"})
@@ -41,84 +32,20 @@ class User extends BaseUser
     private $anfitrion;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Mascota", mappedBy="mascota")
+     * @ORM\OneToMany(targetEntity="App\Entity\Mascota", mappedBy="user")
      */
-    private $mascota;
+    private $mascotas;
 
     public function __construct()
     {
         parent::__construct();
         $this->mascotas = new ArrayCollection();
-        $this->servicios = new ArrayCollection();
-        $this->mascota = new ArrayCollection();
     }
 
     public function getName(): ?string
     {
         parent::__construct();
         // your own logic
-    }
-
-    /**
-     * @return Collection|Mascotas[]
-     */
-    public function getMascotas(): Collection
-    {
-        return $this->mascotas;
-    }
-
-    public function addMascota(Mascotas $mascota): self
-    {
-        if (!$this->mascotas->contains($mascota)) {
-            $this->mascotas[] = $mascota;
-            $mascota->setMascota($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMascota(Mascotas $mascota): self
-    {
-        if ($this->mascotas->contains($mascota)) {
-            $this->mascotas->removeElement($mascota);
-            // set the owning side to null (unless already changed)
-            if ($mascota->getMascota() === $this) {
-                $mascota->setMascota(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Servicios[]
-     */
-    public function getServicios(): Collection
-    {
-        return $this->servicios;
-    }
-
-    public function addServicio(Servicios $servicio): self
-    {
-        if (!$this->servicios->contains($servicio)) {
-            $this->servicios[] = $servicio;
-            $servicio->setServicio($this);
-        }
-
-        return $this;
-    }
-
-    public function removeServicio(Servicios $servicio): self
-    {
-        if ($this->servicios->contains($servicio)) {
-            $this->servicios->removeElement($servicio);
-            // set the owning side to null (unless already changed)
-            if ($servicio->getServicio() === $this) {
-                $servicio->setServicio(null);
-            }
-        }
-
-        return $this;
     }
 
     public function getAnfitrion(): ?Anfitrion
@@ -141,32 +68,31 @@ class User extends BaseUser
     /**
      * @return Collection|Mascota[]
      */
-    public function getMascota(): Collection
+    public function getMascotas(): Collection
     {
-        return $this->mascota;
+        return $this->mascotas;
     }
 
-    public function addMascotum(Mascota $mascotum): self
+    public function addMascota(Mascota $mascota): self
     {
-        if (!$this->mascota->contains($mascotum)) {
-            $this->mascota[] = $mascotum;
-            $mascotum->setMascota($this);
+        if (!$this->mascotas->contains($mascota)) {
+            $this->mascotas[] = $mascota;
+            $mascota->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeMascotum(Mascota $mascotum): self
+    public function removeMascota(Mascota $mascota): self
     {
-        if ($this->mascota->contains($mascotum)) {
-            $this->mascota->removeElement($mascotum);
+        if ($this->mascotas->contains($mascota)) {
+            $this->mascotas->removeElement($mascota);
             // set the owning side to null (unless already changed)
-            if ($mascotum->getMascota() === $this) {
-                $mascotum->setMascota(null);
+            if ($mascota->getUser() === $this) {
+                $mascota->setUser(null);
             }
         }
 
         return $this;
     }
-    
 } 

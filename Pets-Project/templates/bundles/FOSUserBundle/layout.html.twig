@@ -2,8 +2,27 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+        <title>{% block title %}Usuario{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap"> 
+            <style>
+            body{
+                font-family: 'Roboto', sans-serif;
+            }
+            </style> 
+        {% endblock %}
     </head>
     <body>
+        {% block body %}
+            {{ include('header.html.twig')}} 
+        {% endblock %}
+
+    <div class="container" style="margin-top:20px">
+    <center>
+    <img src="{{ asset('img/mascota/index.jpg')}}" class="d-block w-50" alt="...">    
+    </center>
+    
         <div>
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
@@ -29,6 +48,17 @@
             {% block fos_user_content %}
             {% endblock fos_user_content %}
         </div>
+    </div>
+
+
+        {% block footer %}
+            {{ include('footer.html.twig')}}
+        {% endblock %}
+
+        {% block javascripts %}
+            <script src="{{asset('js/jquery-3.4.1.slim.min.js')}}">
+            <script src="{{asset('js/bootstrap.min.js')}}">
+        {% endblock %}
     </body>
 </html>
 
