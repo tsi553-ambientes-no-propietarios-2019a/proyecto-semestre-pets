@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/paquete")
@@ -17,6 +18,10 @@ class PaqueteController extends AbstractController
 {
     /**
      * @Route("/", name="paquete_index", methods={"GET"})
+     * 
+     * Require ROLE_ANFITRION for only this controller method.
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function index(PaqueteRepository $paqueteRepository): Response
     {
@@ -27,6 +32,8 @@ class PaqueteController extends AbstractController
 
     /**
      * @Route("/new", name="paquete_new", methods={"GET","POST"})
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function new(Request $request): Response
     {
@@ -50,6 +57,8 @@ class PaqueteController extends AbstractController
 
     /**
      * @Route("/{id}", name="paquete_show", methods={"GET"})
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function show(Paquete $paquete): Response
     {
@@ -60,6 +69,8 @@ class PaqueteController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="paquete_edit", methods={"GET","POST"})
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function edit(Request $request, Paquete $paquete): Response
     {
@@ -82,6 +93,8 @@ class PaqueteController extends AbstractController
 
     /**
      * @Route("/{id}", name="paquete_delete", methods={"DELETE"})
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function delete(Request $request, Paquete $paquete): Response
     {

@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/anfitrion")
@@ -17,6 +18,10 @@ class AnfitrionController extends AbstractController
 {
     /**
      * @Route("/", name="anfitrion_index", methods={"GET"})
+     * 
+     * Require ROLE_ANFITRION for only this controller method.
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function index(AnfitrionRepository $anfitrionRepository): Response
     {
@@ -27,6 +32,8 @@ class AnfitrionController extends AbstractController
 
     /**
      * @Route("/new", name="anfitrion_new", methods={"GET","POST"})
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function new(Request $request): Response
     {
@@ -50,6 +57,8 @@ class AnfitrionController extends AbstractController
 
     /**
      * @Route("/{id}", name="anfitrion_show", methods={"GET"})
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function show(Anfitrion $anfitrion): Response
     {
@@ -60,6 +69,8 @@ class AnfitrionController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="anfitrion_edit", methods={"GET","POST"})
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function edit(Request $request, Anfitrion $anfitrion): Response
     {
@@ -82,6 +93,8 @@ class AnfitrionController extends AbstractController
 
     /**
      * @Route("/{id}", name="anfitrion_delete", methods={"DELETE"})
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function delete(Request $request, Anfitrion $anfitrion): Response
     {

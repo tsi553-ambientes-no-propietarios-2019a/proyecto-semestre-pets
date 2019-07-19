@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/servicio")
@@ -17,6 +18,10 @@ class ServicioController extends AbstractController
 {
     /**
      * @Route("/", name="servicio_index", methods={"GET"})
+     * 
+     * Require ROLE_ANFITRION for only this controller method.
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function index(ServicioRepository $servicioRepository): Response
     {
@@ -27,6 +32,8 @@ class ServicioController extends AbstractController
 
     /**
      * @Route("/new", name="servicio_new", methods={"GET","POST"})
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function new(Request $request): Response
     {
@@ -50,6 +57,8 @@ class ServicioController extends AbstractController
 
     /**
      * @Route("/{id}", name="servicio_show", methods={"GET"})
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function show(Servicio $servicio): Response
     {
@@ -60,6 +69,8 @@ class ServicioController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="servicio_edit", methods={"GET","POST"})
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function edit(Request $request, Servicio $servicio): Response
     {
@@ -82,6 +93,8 @@ class ServicioController extends AbstractController
 
     /**
      * @Route("/{id}", name="servicio_delete", methods={"DELETE"})
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function delete(Request $request, Servicio $servicio): Response
     {

@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/mascota")
@@ -17,6 +18,10 @@ class MascotaController extends AbstractController
 {
     /**
      * @Route("/", name="mascota_index", methods={"GET"})
+     * 
+     * Require ROLE_USER for only this controller method.
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function index(MascotaRepository $mascotaRepository): Response
     {
@@ -27,6 +32,8 @@ class MascotaController extends AbstractController
 
     /**
      * @Route("/new", name="mascota_new", methods={"GET","POST"})
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function new(Request $request): Response
     {
@@ -50,6 +57,8 @@ class MascotaController extends AbstractController
 
     /**
      * @Route("/{id}", name="mascota_show", methods={"GET"})
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function show(Mascota $mascotum): Response
     {
@@ -60,6 +69,8 @@ class MascotaController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="mascota_edit", methods={"GET","POST"})
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function edit(Request $request, Mascota $mascotum): Response
     {
@@ -82,6 +93,8 @@ class MascotaController extends AbstractController
 
     /**
      * @Route("/{id}", name="mascota_delete", methods={"DELETE"})
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function delete(Request $request, Mascota $mascotum): Response
     {

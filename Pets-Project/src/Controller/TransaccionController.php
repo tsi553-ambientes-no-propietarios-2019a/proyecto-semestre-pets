@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/transaccion")
@@ -17,6 +18,10 @@ class TransaccionController extends AbstractController
 {
     /**
      * @Route("/", name="transaccion_index", methods={"GET"})
+     * 
+     * Require ROLE_ADMIN for only this controller method.
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function index(TransaccionRepository $transaccionRepository): Response
     {
@@ -27,6 +32,8 @@ class TransaccionController extends AbstractController
 
     /**
      * @Route("/new", name="transaccion_new", methods={"GET","POST"})
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function new(Request $request): Response
     {
@@ -50,6 +57,8 @@ class TransaccionController extends AbstractController
 
     /**
      * @Route("/{id}", name="transaccion_show", methods={"GET"})
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function show(Transaccion $transaccion): Response
     {
@@ -60,6 +69,8 @@ class TransaccionController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="transaccion_edit", methods={"GET","POST"})
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function edit(Request $request, Transaccion $transaccion): Response
     {
@@ -82,6 +93,8 @@ class TransaccionController extends AbstractController
 
     /**
      * @Route("/{id}", name="transaccion_delete", methods={"DELETE"})
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function delete(Request $request, Transaccion $transaccion): Response
     {

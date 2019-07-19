@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/cobro/anf")
@@ -17,6 +18,10 @@ class CobroAnfController extends AbstractController
 {
     /**
      * @Route("/", name="cobro_anf_index", methods={"GET"})
+     * 
+     * Require ROLE_ADMIN for only this controller method.
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function index(CobroAnfRepository $cobroAnfRepository): Response
     {
@@ -27,6 +32,8 @@ class CobroAnfController extends AbstractController
 
     /**
      * @Route("/new", name="cobro_anf_new", methods={"GET","POST"})
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function new(Request $request): Response
     {
@@ -50,6 +57,8 @@ class CobroAnfController extends AbstractController
 
     /**
      * @Route("/{id}", name="cobro_anf_show", methods={"GET"})
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function show(CobroAnf $cobroAnf): Response
     {
@@ -60,6 +69,8 @@ class CobroAnfController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="cobro_anf_edit", methods={"GET","POST"})
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function edit(Request $request, CobroAnf $cobroAnf): Response
     {
@@ -82,6 +93,8 @@ class CobroAnfController extends AbstractController
 
     /**
      * @Route("/{id}", name="cobro_anf_delete", methods={"DELETE"})
+     * 
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function delete(Request $request, CobroAnf $cobroAnf): Response
     {
