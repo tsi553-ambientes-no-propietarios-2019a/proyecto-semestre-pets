@@ -21,12 +21,6 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $name;
-
-
-    /**
      * @ORM\OneToOne(targetEntity="App\Entity\Anfitrion", mappedBy="anfitrion", cascade={"persist", "remove"})
      */
     private $anfitrion;
@@ -40,12 +34,6 @@ class User extends BaseUser
     {
         parent::__construct();
         $this->mascotas = new ArrayCollection();
-    }
-
-    public function getName(): ?string
-    {
-        parent::__construct();
-        // your own logic
     }
 
     public function getAnfitrion(): ?Anfitrion
