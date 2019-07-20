@@ -11,7 +11,7 @@ group:
     deleted: 'El grupo ha sido borrado.'
 security:
   login:
-    username: 'Nombre de usuario'
+    username: 'Nombre de usuario o Email'
     password: Contraseña
     remember_me: Recordar
     submit: Entrar
@@ -42,7 +42,7 @@ registration:
       Para completar la validación de tu cuenta, por favor visita %confirmationUrl%
       Este enlace sólo puede utilizarse una vez para validar tu cuenta.
       Atentamente,
-      el Equipo.
+      el Equipo PETSITTER.
 resetting:
   check_email: |
     Se ha enviado un correo electrónico a tu cuenta de correo. Contiene un enlace de activación al que debes acceder para restablecer tu contraseña.
@@ -61,7 +61,7 @@ resetting:
       ¡Hola %username%!
       Para restablecer tu contraseña, por favor visita %confirmationUrl%
       Atentamente,
-      el Equipo.
+      el Equipo PETSITTER.
 layout:
   logout: Salir
   login: Entrar

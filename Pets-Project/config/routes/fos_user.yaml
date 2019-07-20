@@ -4,6 +4,10 @@
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
+fos_user_security_login:
+    path: /iniciar-sesion
+    controller: fos_user.security.controller:loginAction
+
 fos_user_profile:
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
     prefix: /perfil
@@ -14,7 +18,11 @@ fos_user_register:
 
 fos_user_resetting:
     resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
-    prefix: /resetting
+    prefix: /recuperar-contraseña
+
+fos_user_resetting_request:
+    path: /recuperar-contraseña
+    controller: fos_user.resetting.controller:requestAction 
 
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
