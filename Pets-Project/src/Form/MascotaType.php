@@ -7,6 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
+
 
 class MascotaType extends AbstractType
 {
@@ -33,6 +35,8 @@ class MascotaType extends AbstractType
        
                 'placeholder' => 'Seleciona la raza de tú mascota...',    
             ])
+
+            
             ->add('sexo', ChoiceType::class, [
                 'choices' => [
                     'Macho' => 'Macho',
@@ -41,6 +45,8 @@ class MascotaType extends AbstractType
        
                 'placeholder' => 'Seleciona el sexo de tú mascota...',    
             ])
+            
+            ->add('imageFile', VichImageType::class)
         ;
     }
 

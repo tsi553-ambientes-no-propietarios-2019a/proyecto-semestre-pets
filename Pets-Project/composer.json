@@ -27,7 +27,8 @@
         "symfony/validator": "4.3.*",
         "symfony/web-link": "4.3.*",
         "symfony/yaml": "4.3.*",
-        "twbs/bootstrap": "4.0.0"
+        "twbs/bootstrap": "4.0.0",
+        "vich/uploader-bundle": "^1.10"
     },
     "require-dev": {
         "symfony/debug-pack": "*",
@@ -77,7 +78,7 @@
     },
     "extra": {
         "symfony": {
-            "allow-contrib": false,
+            "allow-contrib": true,
             "require": "4.3.*"
         }
     }

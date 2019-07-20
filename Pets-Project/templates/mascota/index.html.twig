@@ -35,6 +35,7 @@
                 <th>Type</th>
                 <th>Age</th>
                 <th>Raza</th>
+                <th>Imagen</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -46,6 +47,7 @@
                 <td>{{ mascotum.Type }}</td>
                 <td>{{ mascotum.age }}</td>
                 <td>{{ mascotum.raza }}</td>
+                <td><img src="{{ vich_uploader_asset(product, 'imageFile') }}" alt="{{ product.name }}"height="30"/><td>
 
 
                 <td>
