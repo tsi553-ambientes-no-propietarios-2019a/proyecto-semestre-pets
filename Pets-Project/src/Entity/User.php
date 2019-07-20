@@ -30,6 +30,11 @@ class User extends BaseUser
      */
     private $mascotas;
 
+    /**
+     * @ORM\Column(type="string", length=120)
+     */
+    private $name;
+
     public function __construct()
     {
         parent::__construct();
@@ -80,6 +85,18 @@ class User extends BaseUser
                 $mascota->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }

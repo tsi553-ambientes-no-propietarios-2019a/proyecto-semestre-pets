@@ -6,6 +6,7 @@ use App\Entity\Mascota;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class MascotaType extends AbstractType
 {
@@ -13,9 +14,33 @@ class MascotaType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('Type')
+            ->add('Type', ChoiceType::class, [
+                    'choices' => [
+                        'Perro' => 'Perro',
+                        'Gato' => 'Gato',
+                        
+                        
+                    ],
+                    'placeholder' => 'Seleciona el tipo de tú mascota...',    
+                ])
             ->add('age')
-            ->add('raza')
+            ->add('raza', ChoiceType::class, [
+                'choices' => [
+                    'Pequeña' => 'Pequeña',
+                    'Mediana' => 'Mediana',
+                    'Grande' => 'Grande',
+                ],
+       
+                'placeholder' => 'Seleciona la raza de tú mascota...',    
+            ])
+            ->add('sexo', ChoiceType::class, [
+                'choices' => [
+                    'Macho' => 'Macho',
+                    'Hembra' => 'Hembra',
+                ],
+       
+                'placeholder' => 'Seleciona el sexo de tú mascota...',    
+            ])
         ;
     }
 

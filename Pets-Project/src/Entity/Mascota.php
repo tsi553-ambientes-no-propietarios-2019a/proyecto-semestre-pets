@@ -42,6 +42,11 @@ class Mascota
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $sexo;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +108,18 @@ class Mascota
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getSexo(): ?string
+    {
+        return $this->sexo;
+    }
+
+    public function setSexo(string $sexo): self
+    {
+        $this->sexo = $sexo;
 
         return $this;
     }

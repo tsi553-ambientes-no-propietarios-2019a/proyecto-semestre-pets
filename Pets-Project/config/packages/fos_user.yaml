@@ -5,3 +5,10 @@ fos_user:
     from_email:
         address: "jose.cortez@epn.edu.ec"
         sender_name: "Jose Cortez"
+
+    registration:
+        form:
+            type: App\Form\RegistrationType
+        
+
+            
