@@ -3,24 +3,24 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}PETS{% endblock %}</title>
-        {% block stylesheets %}
-            <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap"> 
-            <style>
+        <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap"> 
+        <style>
             body{
+                background-color: #f4f4f4;
                 font-family: 'Roboto', sans-serif;
             }
-            </style> 
-        {% endblock %}
+        </style> 
+        {% block stylesheets %}{% endblock %}
     </head>
     <body>
-{% if app.user %}
-        {% for role in app.user.roles %}
-            {{ role }}
-        {% endfor %}
-    {% else %} 
-        NO existe sesion activa
-    {% endif %}   
+        {% if app.user %}
+            {% for role in app.user.roles %}
+                {{ role }}
+            {% endfor %}
+        {% else %} 
+            NO existe sesion activa
+        {% endif %}   
      
         {% block body %}
             {{ include('header.html.twig')}} 
@@ -30,10 +30,9 @@
             {{ include('footer.html.twig')}}
         {% endblock %}
 
-        {% block javascripts %}
-            <script src="{{asset('js/jquery-3.4.1.slim.min.js')}}">
-            <script src="{{asset('js/bootstrap.min.js')}}">
-        {% endblock %}
+        <script src="{{asset('js/jquery-3.4.1.slim.min.js')}}">
+        <script src="{{asset('js/bootstrap.min.js')}}">
+        {% block javascripts %}{% endblock %}
     </body>
 </html>
 

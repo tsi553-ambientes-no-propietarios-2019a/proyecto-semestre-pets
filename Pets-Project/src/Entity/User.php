@@ -21,41 +21,36 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Anfitrion", mappedBy="anfitrion", cascade={"persist", "remove"})
-     */
-    private $anfitrion;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Mascota", mappedBy="user")
      */
     private $mascotas;
 
     /**
-     * @ORM\Column(type="string", length=120)
+     * @ORM\OneToMany(targetEntity="App\Entity\Servicio", mappedBy="user")
      */
-    private $name;
+    private $servicios;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Paquete", mappedBy="user", orphanRemoval=true)
+     */
+    private $paquetes;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\CobroAnf", mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $cobroAnf;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $cuenta_banco;
 
     public function __construct()
     {
         parent::__construct();
         $this->mascotas = new ArrayCollection();
-    }
-
-    public function getAnfitrion(): ?Anfitrion
-    {
-        return $this->anfitrion;
-    }
-
-    public function setAnfitrion(Anfitrion $anfitrion): self
-    {
-        $this->anfitrion = $anfitrion;
-
-        // set the owning side of the relation if necessary
-        if ($this !== $anfitrion->getAnfitrion()) {
-            $anfitrion->setAnfitrion($this);
-        }
-
-        return $this;
+        $this->servicios = new ArrayCollection();
+        $this->paquetes = new ArrayCollection();
     }
 
     /**
@@ -89,14 +84,93 @@ class User extends BaseUser
         return $this;
     }
 
-    public function getName(): ?string
+    /**
+     * @return Collection|Servicio[]
+     */
+    public function getServicios(): Collection
     {
-        return $this->name;
+        return $this->servicios;
     }
 
-    public function setName(string $name): self
+    public function addServicio(Servicio $servicio): self
     {
-        $this->name = $name;
+        if (!$this->servicios->contains($servicio)) {
+            $this->servicios[] = $servicio;
+            $servicio->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeServicio(Servicio $servicio): self
+    {
+        if ($this->servicios->contains($servicio)) {
+            $this->servicios->removeElement($servicio);
+            // set the owning side to null (unless already changed)
+            if ($servicio->getUser() === $this) {
+                $servicio->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Paquete[]
+     */
+    public function getPaquetes(): Collection
+    {
+        return $this->paquetes;
+    }
+
+    public function addPaquete(Paquete $paquete): self
+    {
+        if (!$this->paquetes->contains($paquete)) {
+            $this->paquetes[] = $paquete;
+            $paquete->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePaquete(Paquete $paquete): self
+    {
+        if ($this->paquetes->contains($paquete)) {
+            $this->paquetes->removeElement($paquete);
+            // set the owning side to null (unless already changed)
+            if ($paquete->getUser() === $this) {
+                $paquete->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getCobroAnf(): ?CobroAnf
+    {
+        return $this->cobroAnf;
+    }
+
+    public function setCobroAnf(CobroAnf $cobroAnf): self
+    {
+        $this->cobroAnf = $cobroAnf;
+
+        // set the owning side of the relation if necessary
+        if ($this !== $cobroAnf->getUser()) {
+            $cobroAnf->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function getCuentaBanco(): ?string
+    {
+        return $this->cuenta_banco;
+    }
+
+    public function setCuentaBanco(?string $cuenta_banco): self
+    {
+        $this->cuenta_banco = $cuenta_banco;
 
         return $this;
     }

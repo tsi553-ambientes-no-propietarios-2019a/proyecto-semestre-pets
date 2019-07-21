@@ -28,9 +28,10 @@ class CobroAnf
     private $Id_Transaccion;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Anfitrion", mappedBy="idAnfitrion", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="cobroAnf", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $anfitrion;
+    private $user;
 
     public function getId(): ?int
     {
@@ -61,20 +62,16 @@ class CobroAnf
         return $this;
     }
 
-    public function getAnfitrion(): ?Anfitrion
+    public function getUser(): ?User
     {
-        return $this->anfitrion;
+        return $this->user;
     }
 
-    public function setAnfitrion(Anfitrion $anfitrion): self
+    public function setUser(User $user): self
     {
-        $this->anfitrion = $anfitrion;
-
-        // set the owning side of the relation if necessary
-        if ($this !== $anfitrion->getIdAnfitrion()) {
-            $anfitrion->setIdAnfitrion($this);
-        }
+        $this->user = $user;
 
         return $this;
     }
+
 }

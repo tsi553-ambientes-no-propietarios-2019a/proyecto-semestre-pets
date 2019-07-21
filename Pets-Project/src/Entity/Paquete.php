@@ -44,10 +44,10 @@ class Paquete
     private $servicios;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Anfitrion", inversedBy="Id_adfitrion")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="paquetes")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $anfitrion;
+    private $user;
 
     public function __construct()
     {
@@ -138,15 +138,16 @@ class Paquete
         return $this;
     }
 
-    public function getAnfitrion(): ?Anfitrion
+    public function getUser(): ?User
     {
-        return $this->anfitrion;
+        return $this->user;
     }
 
-    public function setAnfitrion(?Anfitrion $anfitrion): self
+    public function setUser(?User $user): self
     {
-        $this->anfitrion = $anfitrion;
+        $this->user = $user;
 
         return $this;
     }
+
 }

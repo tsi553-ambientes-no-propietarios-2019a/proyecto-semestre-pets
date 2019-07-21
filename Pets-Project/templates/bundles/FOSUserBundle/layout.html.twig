@@ -3,37 +3,27 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Usuario{% endblock %}</title>
-        {% block stylesheets %}
-            <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap"> 
-            <style>
+        <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap"> 
+        <style>
             body{
+                background-color: #f9f9f9;
                 font-family: 'Roboto', sans-serif;
             }
-            </style> 
-        {% endblock %}
+        </style>
+        {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}
-            {{ include('user_nav.html.twig')}} 
-        {% endblock %}
-
-    <div class="container" style="margin-top:20px">
+        {% block body %}{% endblock %}
     
-    <center>
-    <img src="{{ asset('img/logo.jpeg')}}" class="d-block w-25" width="100" height="120">    
-    </center>
-    
-        <div>
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
                 <a href="{{ path('fos_user_security_logout') }}">
                     {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
                 </a>
             {% else %}
-                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                <!--<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>-->
             {% endif %}
-        </div>
 
         {% if app.request.hasPreviousSession %}
             {% for type, messages in app.session.flashbag.all() %}
@@ -45,21 +35,16 @@
             {% endfor %}
         {% endif %}
 
-        <div>
             {% block fos_user_content %}
             {% endblock fos_user_content %}
-        </div>
-    </div>
-
 
         {% block footer %}
             {{ include('user_footer.html.twig')}}
         {% endblock %}
 
-        {% block javascripts %}
-            <script src="{{asset('js/jquery-3.4.1.slim.min.js')}}">
-            <script src="{{asset('js/bootstrap.min.js')}}">
-        {% endblock %}
+        <script src="{{asset('js/jquery-3.4.1.slim.min.js')}}">
+        <script src="{{asset('js/bootstrap.min.js')}}">
+        {% block javascripts %}{% endblock %}
     </body>
 </html>
 
