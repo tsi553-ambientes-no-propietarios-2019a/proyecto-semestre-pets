@@ -9,7 +9,9 @@
 
     {{ include('mascota/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('mascota_index') }}">back to list</a>
+    <a href="{{ path('mascota_index') }}">
+    <button  class="btn btn-secondary">{{ button_label|default('Volver') }}</button>
+    </a>
 
     {{ include('mascota/_delete_form.html.twig') }}
     </div>

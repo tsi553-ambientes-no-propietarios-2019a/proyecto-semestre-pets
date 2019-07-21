@@ -49,9 +49,15 @@ class Paquete
      */
     private $anfitrion;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Valorizacion", mappedBy="paquete", orphanRemoval=true)
+     */
+    private $valorizacion;
+
     public function __construct()
     {
         $this->servicios = new ArrayCollection();
+        $this->valorizacion = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -146,6 +152,37 @@ class Paquete
     public function setAnfitrion(?Anfitrion $anfitrion): self
     {
         $this->anfitrion = $anfitrion;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Valorizacion[]
+     */
+    public function getValorizacion(): Collection
+    {
+        return $this->valorizacion;
+    }
+
+    public function addValorizacion(Valorizacion $valorizacion): self
+    {
+        if (!$this->valorizacion->contains($valorizacion)) {
+            $this->valorizacion[] = $valorizacion;
+            $valorizacion->setPaquete($this);
+        }
+
+        return $this;
+    }
+
+    public function removeValorizacion(Valorizacion $valorizacion): self
+    {
+        if ($this->valorizacion->contains($valorizacion)) {
+            $this->valorizacion->removeElement($valorizacion);
+            // set the owning side to null (unless already changed)
+            if ($valorizacion->getPaquete() === $this) {
+                $valorizacion->setPaquete(null);
+            }
+        }
 
         return $this;
     }

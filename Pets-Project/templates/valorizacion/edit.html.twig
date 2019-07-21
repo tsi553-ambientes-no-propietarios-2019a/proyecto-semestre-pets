@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Valorizacion{% endblock %}
+
+{% block body %}
+    <h1>Edit Valorizacion</h1>
+
+    {{ include('valorizacion/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('valorizacion_index') }}">
+    <button  class="btn btn-secondary">{{ button_label|default('Volver') }}</button>
+    </a>
+
+    {{ include('valorizacion/_delete_form.html.twig') }}
+{% endblock %}

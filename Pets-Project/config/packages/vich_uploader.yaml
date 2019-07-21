@@ -5,7 +5,3 @@ vich_uploader:
         mascota_image:
             uri_prefix: /images/mascotas
             upload_destination: '%kernel.project_dir%/public/images/mascotas'
-            
-            inject_on_load: false
-        
-            

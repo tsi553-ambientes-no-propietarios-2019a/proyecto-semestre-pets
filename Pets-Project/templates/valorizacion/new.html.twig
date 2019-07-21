@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nueva Valorización{% endblock %}
+
+{% block body %}
+{{parent()}}
+<div class="container">
+    <h1><center> Ingresar Valorización </center></h1>
+
+    {{ include('valorizacion/_form.html.twig') }}
+
+    <a href="{{ path('valorizacion_index') }}">
+    <button class="btn btn-secondary">{{ button_label|default('volver') }}</button>
+    </a>
+    </div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Valorizacion index{% endblock %}
+
+{% block body %}
+    {{parent()}}
+
+    <body>
+
+  
+
+    <!-- Jumbotron Header -->
+<header ">
+    <center>
+      <h1 class="display-3">Bienvenido a Valorización!</h1>
+      <img src="{{ asset('img/mascota/index.jpg')}}" class="d-block w-50" alt="...">
+      
+ 
+    <div class="container">
+            <a href="{{ path('valorizacion_new') }}">
+            <button type="button" class="btn btn-primary">Ingrese la calificación</button>
+            </a>
+    </div>
+
+ </center>
+<div class="cover-container w-80 h-80 p-5">
+<div style="text-align:center;">
+
+   <table class="table table-borderless style="text-align:center">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>NumVotos</th>
+                <th>Puntos</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for valorizacion in valorizacions %}
+            <tr>
+                <td>{{ valorizacion.id }}</td>
+                <td>{{ valorizacion.numVotos }}</td>
+                <td>{{ valorizacion.puntos }}</td>
+                <td>
+                    <a href="{{ path('valorizacion_show', {'id': valorizacion.id}) }}">show</a>
+                    <button type="button" class="btn btn-info">Mirar</button>
+                    </a>
+
+                    <a href="{{ path('valorizacion_edit', {'id': valorizacion.id}) }}">edit</a>
+                    <button type="button" class="btn btn-success">Editar</button>
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aún no has ingresado datos</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

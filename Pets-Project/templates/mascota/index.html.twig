@@ -39,7 +39,7 @@
                 <th>actions</th>
             </tr>
         </thead>
-        <tbody>
+        <body>
         {% for mascotum in mascotas %}
             <tr>
                 <td>{{ mascotum.id }}</td>
@@ -64,27 +64,13 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">Aún no has ingresado datos</td>
+                <td colspan="7">Aún no has ingresado datos</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-    </div>
     
     
 
-  </div>
-  <!-- /.container -->
-
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-    </div>
-    <!-- /.container -->
-  </footer>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
 {% endblock %}

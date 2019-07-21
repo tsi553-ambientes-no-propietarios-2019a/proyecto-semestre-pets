@@ -32,9 +32,14 @@
         </tbody>
     </table>
 
-    <a href="{{ path('mascota_index') }}">back to list</a>
+    <a href="{{ path('mascota_index') }}">
+    <button  class="btn btn-secondary">{{ button_label|default('Volver') }}</button>
+    </a>
 
-    <a href="{{ path('mascota_edit', {'id': mascotum.id}) }}">edit</a>
+    <a href="{{ path('mascota_edit', {'id': mascotum.id}) }}">
+    <button type="button" class="btn btn-success">Editar</button>
+       
+    </a>
 
     {{ include('mascota/_delete_form.html.twig') }}
     </div>

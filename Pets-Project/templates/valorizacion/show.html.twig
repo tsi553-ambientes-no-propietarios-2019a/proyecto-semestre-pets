@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Valorizacion{% endblock %}
+
+{% block body %}
+{{parent()}}
+<div class="container">
+    <center> Valorización </center> 
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ valorizacion.id }}</td>
+            </tr>
+            <tr>
+                <th>NumVotos</th>
+                <td>{{ valorizacion.numVotos }}</td>
+            </tr>
+            <tr>
+                <th>Puntos</th>
+                <td>{{ valorizacion.puntos }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('valorizacion_index') }}">
+    <button  class="btn btn-secondary">{{ button_label|default('Volver') }}</button>
+    </a>
+
+    <a href="{{ path('valorizacion_edit', {'id': valorizacion.id}) }}">
+    <button type="button" class="btn btn-success">Editar</button>
+    </a>
+
+    {{ include('valorizacion/_delete_form.html.twig') }}
+    </div>
+{% endblock %}
