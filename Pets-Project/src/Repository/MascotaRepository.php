@@ -19,10 +19,10 @@ class MascotaRepository extends ServiceEntityRepository
         parent::__construct($registry, Mascota::class);
     }
 
-    // /**
-    //  * @return Mascota[] Returns an array of Mascota objects
-    //  */
-    /*
+    /**
+      * @return Mascota[] Returns an array of Mascota objects
+      */
+    
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('m')
@@ -34,9 +34,7 @@ class MascotaRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
-
-    /*
+    
     public function findOneBySomeField($value): ?Mascota
     {
         return $this->createQueryBuilder('m')
@@ -46,5 +44,5 @@ class MascotaRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    */
+    
 }

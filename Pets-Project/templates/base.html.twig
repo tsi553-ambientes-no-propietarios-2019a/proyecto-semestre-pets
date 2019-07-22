@@ -14,13 +14,6 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% if app.user %}
-            {% for role in app.user.roles %}
-                {{ role }}
-            {% endfor %}
-        {% else %} 
-            NO existe sesion activa
-        {% endif %}   
      
         {% block body %}
             {{ include('header.html.twig')}} 

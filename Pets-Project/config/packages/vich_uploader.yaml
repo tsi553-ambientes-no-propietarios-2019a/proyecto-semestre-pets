@@ -7,5 +7,15 @@ vich_uploader:
             upload_destination: '%kernel.project_dir%/public/images/mascotas'
             
             inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+        
+        user_imagen:
+            uri_prefix: /images/user
+            upload_destination: '%kernel.project_dir%/public/images/user'
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
         
             

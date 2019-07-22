@@ -13,15 +13,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/pago/cliente")
+ * 
+ * @IsGranted("ROLE_USER")
+ * 
  */
 class PagoClienteController extends AbstractController
 {
     /**
      * @Route("/", name="pago_cliente_index", methods={"GET"})
-     * 
-     * Require ROLE_USER for only this controller method.
-     * 
-     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function index(PagoClienteRepository $pagoClienteRepository): Response
     {
@@ -31,9 +30,7 @@ class PagoClienteController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="pago_cliente_new", methods={"GET","POST"})
-     * 
-     * @IsGranted("IS_AUTHENTICATED_FULLY")
+     * @Route("/new", name="pago_cliente_new", methods={"GET","POST"}) 
      */
     public function new(Request $request): Response
     {
@@ -57,8 +54,6 @@ class PagoClienteController extends AbstractController
 
     /**
      * @Route("/{id}", name="pago_cliente_show", methods={"GET"})
-     * 
-     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function show(PagoCliente $pagoCliente): Response
     {
@@ -69,8 +64,6 @@ class PagoClienteController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="pago_cliente_edit", methods={"GET","POST"})
-     * 
-     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function edit(Request $request, PagoCliente $pagoCliente): Response
     {
@@ -93,8 +86,6 @@ class PagoClienteController extends AbstractController
 
     /**
      * @Route("/{id}", name="pago_cliente_delete", methods={"DELETE"})
-     * 
-     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function delete(Request $request, PagoCliente $pagoCliente): Response
     {

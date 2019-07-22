@@ -18,15 +18,19 @@ fos_user_register:
 
 fos_user_resetting:
     resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
-    prefix: /recuperar-contraseña
+    prefix: /recuperar-clave
 
 fos_user_resetting_request:
-    path: /recuperar-contraseña
+    path: /recuperar-clave
     controller: fos_user.resetting.controller:requestAction 
 
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /perfil
+
+fos_user_profile_edit:
+    path: /editar-perfil
+    controller: fos_user.profile.controller:editAction 
 
 
 
