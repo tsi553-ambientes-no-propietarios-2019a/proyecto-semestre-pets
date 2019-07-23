@@ -1,12 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Paquete{% endblock %}
+{% block title %}Paquete index{% endblock %}
 
 {% block body %}
 {{ parent()}}
+    <h1>Paquete index</h1>
 
-    <h1 class="display-2 text-center">Crea tus servecios con paquetes</h1>
- <div class="container">
     <table class="table">
         <thead>
             <tr>
@@ -15,6 +14,9 @@
                 <th>Alimento</th>
                 <th>Aseo_Masc</th>
                 <th>Precio</th>
+                <th>Descripcion</th>
+                <th>Paseo</th>
+                <th>Imagen</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -26,6 +28,10 @@
                 <td>{{ paquete.Alimento }}</td>
                 <td>{{ paquete.AseoMasc }}</td>
                 <td>{{ paquete.Precio }}</td>
+                <td>{{ paquete.descripcion }}</td>
+                <td>{{ paquete.paseo }}</td>
+                <td><img src="{{ vich_uploader_asset(paquete, 'imageFile') }}" alt="{{ paquete.id }}" height="30"/><td>
+
                 <td>
                     <a href="{{ path('paquete_show', {'id': paquete.id}) }}">show</a>
                     <a href="{{ path('paquete_edit', {'id': paquete.id}) }}">edit</a>
@@ -33,12 +39,11 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="8">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('paquete_new') }}" class = "btn btn-success">Create new</a>
-    </div>
+    <a href="{{ path('paquete_new') }}">Create new</a>
 {% endblock %}

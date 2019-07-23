@@ -20,8 +20,6 @@ class MascotaType extends AbstractType
                     'choices' => [
                         'Perro' => 'Perro',
                         'Gato' => 'Gato',
-                        
-                        
                     ],
                     'placeholder' => 'Seleciona el tipo de tú mascota...',    
                 ])

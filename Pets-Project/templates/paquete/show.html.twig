@@ -3,7 +3,7 @@
 {% block title %}Paquete{% endblock %}
 
 {% block body %}
- {{ parent()}}
+{{ parent()}}
     <h1>Paquete</h1>
 
     <table class="table">
@@ -27,6 +27,14 @@
             <tr>
                 <th>Precio</th>
                 <td>{{ paquete.Precio }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ paquete.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Paseo</th>
+                <td>{{ paquete.paseo }}</td>
             </tr>
         </tbody>
     </table>

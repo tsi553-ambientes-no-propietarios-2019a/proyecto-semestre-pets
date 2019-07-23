@@ -3,19 +3,19 @@
 namespace App\Controller;
 
 use App\Entity\Paquete;
-use App\Form\PaqueteType;
+use App\Form\Paquete1Type;
 use App\Repository\PaqueteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use App\Entity\User;
 
 /**
  * @Route("/paquete")
  * 
  * @IsGranted("ROLE_ANFITRION")
- * 
  */
 class PaqueteController extends AbstractController
 {
@@ -35,11 +35,12 @@ class PaqueteController extends AbstractController
     public function new(Request $request): Response
     {
         $paquete = new Paquete();
-        $form = $this->createForm(PaqueteType::class, $paquete);
+        $form = $this->createForm(Paquete1Type::class, $paquete);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $paquete->setUser($this->getUser());
             $entityManager->persist($paquete);
             $entityManager->flush();
 
@@ -67,15 +68,13 @@ class PaqueteController extends AbstractController
      */
     public function edit(Request $request, Paquete $paquete): Response
     {
-        $form = $this->createForm(PaqueteType::class, $paquete);
+        $form = $this->createForm(Paquete1Type::class, $paquete);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('paquete_index', [
-                'id' => $paquete->getId(),
-            ]);
+            return $this->redirectToRoute('paquete_index');
         }
 
         return $this->render('paquete/edit.html.twig', [

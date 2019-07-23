@@ -19,10 +19,10 @@ class PaqueteRepository extends ServiceEntityRepository
         parent::__construct($registry, Paquete::class);
     }
 
-    // /**
-    //  * @return Paquete[] Returns an array of Paquete objects
-    //  */
-    /*
+     /**
+      * @return Paquete[] Returns an array of Paquete objects
+      */
+    
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('p')
@@ -34,9 +34,9 @@ class PaqueteRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
+    
 
-    /*
+    
     public function findOneBySomeField($value): ?Paquete
     {
         return $this->createQueryBuilder('p')
@@ -46,5 +46,5 @@ class PaqueteRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    */
+    
 }

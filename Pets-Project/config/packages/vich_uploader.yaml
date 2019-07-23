@@ -18,4 +18,12 @@ vich_uploader:
             delete_on_update: true
             delete_on_remove: true
         
+        paquete_image:
+            uri_prefix: /images/paquete
+            upload_destination: '%kernel.project_dir%/public/images/paquete'
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+        
             
