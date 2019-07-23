@@ -32,33 +32,46 @@
 
           {% if is_granted("IS_AUTHENTICATED_FULLY") %}
             
-            {% if is_granted("ROLE_USER")%}
-              <a class="nav-item nav-link text-muted" href="#"> Anfitrion</a> 
-              <a href="{{ path('fos_user_profile_show')}}">
-              <img src="{{ vich_uploader_asset(app.user, 'imageFile') }}" alt="{{ app.user.username }}" class="rounded-circle border border-secondary" width="40" height="40">
-              </a>
-              <span> 
-                <a class="nav-item nav-link text-muted" href="{{ path('fos_user_profile_show')}}"> {{ app.user.username }}</a>
-              </span>
-              <span> 
-                <a class="nav-item nav-link text-muted" href="{{ path('mascota_index')}}"> Mascota </a>
-              </span>                   
-            {% endif %}
-            
-            {% if app.user.username %}
-              
-            {% endif %}
+            {% if is_granted("ROLE_ANFITRION") %}
 
-            {% if is_granted("ROLE_ANFITRION")%}
-              <a href="{{ path('fos_user_profile_show')}}">
-              <img src="{{ vich_uploader_asset(app.user, 'imageFile') }}" alt="{{ app.user.username }}" class="rounded-circle border border-secondary" width="40" height="40">
-              </a>
               <span> 
-                <a class="nav-item nav-link text-muted" href="{{ path('fos_user_profile_show')}}">hola anfitrion {{ app.user.username }}</a>
+                <a href="{{ path('fos_user_profile_show')}}">
+                <img src="{{ vich_uploader_asset(app.user, 'imageFile') }}" alt="{{ app.user.username }}" class="rounded-circle border border-secondary" width="40" height="40">
+                </a>
               </span>
+              <span>
+                <a class="nav-item nav-link text-muted" href="{{ path('fos_user_profile_show')}}">Hola {{ app.user.username }}</a>
+              </span>
+              <span> <a class="nav-item nav-link text-muted"> | </a> </span>
               <span> 
                 <a class="nav-item nav-link text-muted" href="{{ path('paquete_index')}}"> Paquetes </a>
-              </span>                  
+              </span>
+              <span> <a class="nav-item nav-link text-muted"> | </a> </span>
+              <span> 
+                <a class="nav-item nav-link text-muted" href="{{ path('mascota_index')}}"> Mascota </a>
+              </span>
+              <span> <a class="nav-item nav-link text-muted"> | </a> </span>
+                                 
+            {% elseif is_granted("ROLE_USER") %}
+              
+              <span> 
+                <a href="{{ path('fos_user_profile_show')}}">
+                <img src="{{ vich_uploader_asset(app.user, 'imageFile') }}" alt="{{ app.user.username }}" class="rounded-circle border border-secondary" width="40" height="40">
+                </a>
+              </span>
+              <span>
+                <a class="nav-item nav-link text-muted" href="{{ path('fos_user_profile_show')}}">Hola {{ app.user.username }}</a>
+              </span>
+              <span> <a class="nav-item nav-link text-muted"> | </a> </span>
+              <a class="nav-item nav-link text-muted" href="#"> Se Anfitrion</a> 
+              <span> <a class="nav-item nav-link text-muted"> | </a> </span>
+              <span> 
+                <a class="nav-item nav-link text-muted" href="{{ path('mascota_index')}}"> Mascota </a>
+              </span>
+              <span> <a class="nav-item nav-link text-muted"> | </a> </span>
+              
+              
+
             {% endif %}
             
             <span> <a class="nav-item nav-link text-muted" href="{{ path('fos_user_security_logout') }}"> SALIR </a></span>
