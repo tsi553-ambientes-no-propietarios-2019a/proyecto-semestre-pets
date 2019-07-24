@@ -1,20 +1,24 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="container">
+<div class="container-fluid" style = "background-image:url('{{asset('images/user/perrogato.jpg')}}')">
     <div class="row">
-        <div class="col-lg-8">
-            <div class="p-2 flex-column border border-secondary rounded-lg" style="margin-top: 25px; background-color: #FFF;">
-                {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-                    {{form_row(form)}}
+        <div class="col-lg-7">
+            <left>
+                <div class="p-2 flex-column border border-secondary rounded-lg" style="margin-top: 25px; background-color: #FFF; opacity:0.8">
+                    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
 
-                    {{ form_widget(form) }}
-                    <div>
-                        <input type="submit" class="btn btn-primary" value="{{ 'registration.submit'|trans }}" />
-                    </div>
-                {{ form_end(form) }}
-            </div>
+                        {{ form_widget(form) }}
+                    
+                        <div>
+
+                            <input type="submit" class="btn btn-primary" center value="{{ 'registration.submit'|trans }}" />
+                        </div>
+                        
+                    {{ form_end(form) }}
+                </div>
+            </left>
         </div>
-            <p>alguna imagen</p>
+           
         <div class="col-sm">
         </div>
     </div>
