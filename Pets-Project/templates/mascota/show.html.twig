@@ -6,8 +6,12 @@
 {{parent()}}
 <div class="container">
     <h1> <center> Mascota </center> </h1>
-
-    <table class="table">
+    <center>
+    <img src="{{ vich_uploader_asset(mascotum, 'imageFile') }}" alt="{{ mascotum.name }}" width="200" height="200">
+    </center>
+    <br>
+    <<table class="table">
+  <thead class="thead-dark">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -30,6 +34,7 @@
                 <td>{{ mascotum.raza }}</td>
             </tr>
         </tbody>
+        </thead>
     </table>
 
     <a href="{{ path('mascota_index') }}">back to list</a>
