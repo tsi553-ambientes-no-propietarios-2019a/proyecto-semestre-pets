@@ -11,7 +11,7 @@
 <header ">
     <center>
       <h1 class="display-3">Bienvenido a Mascotas!</h1>
-      <img src="{{ asset('img/mascota/index.jpg')}}" class="d-block w-50" alt="...">
+      
       
  
     <div class="container">
@@ -25,41 +25,50 @@
 <div class="cover-container w-80 h-80 p-5">
 <div style="text-align:center;">
     
-    <table class="table table-borderless style="text-align:center">
-        <thead class="thead-dark">
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Age</th>
-                <th>Raza</th>
-                <th>Imagen</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for mascotum in mascotas %}
-            <tr>
-                <td>{{ mascotum.id }}</td>
-                <td>{{ mascotum.name }}</td>
-                <td>{{ mascotum.Type }}</td>
-                <td>{{ mascotum.age }}</td>
-                <td>{{ mascotum.raza }}</td>
-                <td><img src="{{ vich_uploader_asset(mascotum, 'imageFile') }}" alt="{{ mascotum.name }}" height="30"/><td>
-                
+   
+    {% for mascotum in mascotas %}
 
-                <td>
-                    
-                    <a href="{{ path('mascota_show', {'id': mascotum.id}) }}">
-                    <button type="button" class="btn btn-info">Mirar</button>
-                    
-                    </a>
-                    <a href="{{ path('mascota_edit', {'id': mascotum.id}) }}">
-                    <button type="button" class="btn btn-success">Editar</button>
-                    </a>
-                    
-                </td>
-            </tr>
+  <div class="shadow-lg p-3 mb-5 bg-white rounded">
+  <div class="card border-info" style="width: 28rem;">
+  <img src="{{ vich_uploader_asset(mascotum, 'imageFile') }}" class="card-img-top" alt="{{ mascotum.name }}">
+  <div class="card-body style="color:green"">
+    <h1 class="card-title" style="color:#2E4053; text-transform: uppercase;";>{{ mascotum.name }} </h1>
+    
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    
+  </div>
+   <div class="card-header">
+    INFORMACIÓN
+  </div>
+  <ul class="list-group list-group-flush">
+  
+  <li class="list-group-item">
+  Tipo: {{ mascotum.Type }}
+  <br>
+  Edad: {{ mascotum.age }}
+  <br>
+  <td>{{ mascotum.raza }}</td>
+  
+  </li>
+
+  </ul>
+
+  <div class="card-body"> 
+  <---°OPCIONES°--->
+
+  <br>
+    
+    <a href="{{ path('mascota_show', {'id': mascotum.id}) }}">
+    <button type="button" class="btn btn-info">Mirar</button>
+    </a>
+    <a href="{{ path('mascota_edit', {'id': mascotum.id}) }}">
+    <button type="button" class="btn btn-success">Editar</button>
+    </a>
+
+  </div>
+</div>
+</div>
+            
         {% else %}
             <tr>
                 <td colspan="6">Aún no has ingresado datos</td>
