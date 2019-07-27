@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HostController!{% endblock %}
+
+{% block body %}
+{{parent()}}
+
+    aqui ya va el from de la cuenta
+    {{ include('host/_form.html.twig', {'button_label': 'Update'}) }}
+{% endblock %}
+
+
