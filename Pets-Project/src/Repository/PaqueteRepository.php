@@ -23,10 +23,10 @@ class PaqueteRepository extends ServiceEntityRepository
       * @return Paquete[] Returns an array of Paquete objects
       */
     
-    public function findByExampleField($value)
+    public function findUser($value)
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
+            ->andWhere('p.user = :val')
             ->setParameter('val', $value)
             ->orderBy('p.id', 'ASC')
             ->setMaxResults(10)

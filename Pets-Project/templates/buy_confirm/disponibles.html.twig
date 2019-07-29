@@ -1,21 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Paquete{% endblock %}
+{% block title %}Paquetes disponibles{% endblock %}
 
 {% block body %}
-{{ parent()}}
-    <h1 class="display-2 text-center">Tus paquetes creados</h1>
-    
-    <br>
-    <div class="container">
-        <a href="{{ path('paquete_new') }}" class="btn btn-primary">Crear nuevo paquete</a>
-    </div>
-    <br>
-
+    {{parent()}}
     <div class="container">
         <div class="row">
             {% for paquete in paquetes %}
-            <?php var_dump(paquete); ?>
                 <div class="col-sm">   
                     <div class="card" style="width: 18rem;">
                         <div class="card-header p-3 mb-2 bg-success text-white">
@@ -23,15 +14,13 @@
                         </div>
                         <img src="{{ vich_uploader_asset(paquete, 'imageFile') }}" alt="{{ paquete.id }}" class="card-img-top" height="200">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
                             <p class="card-text">
                                 Alimento: {{ paquete.Alimento }} <br>
                                 Precio: {{ paquete.Precio }} <br>
                                 Tipo: {{ paquete.descripcion }} <br>
                             </p>
 
-                            <a href="{{ path('paquete_show', {'id': paquete.id}) }}" class="btn btn-info">show</a>
-                            <a href="{{ path('paquete_edit', {'id': paquete.id}) }}" class="btn btn-secondary">edit</a>
+                            <a href="{{ path('pago_cliente_new', {'id': paquete.id}) }}" class="btn btn-danger">COMPRAR</a>
                         </div>
                     </div>
                 </div>
@@ -43,5 +32,4 @@
         </div>
     </div>    
     <br>
-    
 {% endblock %}

@@ -3,42 +3,42 @@
 {% block title %}Servicio index{% endblock %}
 
 {% block body %}
-<<<<<<< HEAD
  {{ parent()}}
  <div class="container">
-=======
->>>>>>> 9290f0b2ebcdca55e13e8378efaa9b2fc905c190
-    <h1>Servicio index</h1>
+    {% if is_granted("ROLE_ANFITRION") %}
+        <h1 class="display-3 text-center">Tus servicios contratado</h1>
+    {% elseif is_granted("ROLE_USER") %}
+        <h1 class="display-3 text-center">Tus servicios contratado</h1>
+    {% endif %}
+
+    {% if is_granted("ROLE_SUPER_ADMIN") %}
+        <h1>Servicio Contratados</h1>
+    {% endif %}
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-<<<<<<< HEAD
                 <th>Hora_Inicio</th>
                 <th>Hora_Fin</th>
-=======
-                <th>Start_Time</th>
-                <th>Time_end</th>
->>>>>>> 9290f0b2ebcdca55e13e8378efaa9b2fc905c190
-                <th>actions</th>
+                {% if is_granted("ROLE_SUPER_ADMIN") %}
+                    <th>actions</th>
+                {% endif %}
+
             </tr>
         </thead>
         <tbody>
         {% for servicio in servicios %}
             <tr>
                 <td>{{ servicio.id }}</td>
-<<<<<<< HEAD
                 <td>{{ servicio.HoraInicio ? servicio.HoraInicio|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ servicio.HoraFin ? servicio.HoraFin|date('Y-m-d H:i:s') : '' }}</td>
-=======
-                <td>{{ servicio.StartTime ? servicio.StartTime|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ servicio.timeEnd ? servicio.timeEnd|date('Y-m-d H:i:s') : '' }}</td>
->>>>>>> 9290f0b2ebcdca55e13e8378efaa9b2fc905c190
+                {% if is_granted("ROLE_SUPER_ADMIN") %}
                 <td>
                     <a href="{{ path('servicio_show', {'id': servicio.id}) }}">show</a>
                     <a href="{{ path('servicio_edit', {'id': servicio.id}) }}">edit</a>
                 </td>
+                {% endif %}
             </tr>
         {% else %}
             <tr>
@@ -48,9 +48,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('servicio_new') }}">Create new</a>
-<<<<<<< HEAD
 </div>
-=======
->>>>>>> 9290f0b2ebcdca55e13e8378efaa9b2fc905c190
 {% endblock %}

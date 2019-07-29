@@ -14,7 +14,6 @@ class ServicioType extends AbstractType
         $builder
             ->add('Hora_Inicio')
             ->add('Hora_Fin')
-            ->add('Servicio_Paquete')
         ;
     }
 

@@ -14,7 +14,6 @@ class PagoClienteType extends AbstractType
         $builder
             ->add('nombre')
             ->add('apellido')
-            ->add('create_at')
         ;
     }
 

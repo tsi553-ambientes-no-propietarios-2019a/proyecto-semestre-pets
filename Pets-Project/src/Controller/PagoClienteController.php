@@ -35,15 +35,21 @@ class PagoClienteController extends AbstractController
     public function new(Request $request): Response
     {
         $pagoCliente = new PagoCliente();
+        $id_select_produc = $_GET['id'];
+        
         $form = $this->createForm(PagoClienteType::class, $pagoCliente);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $pagoCliente->setCreateAt(new \DateTime("now"));
             $entityManager->persist($pagoCliente);
             $entityManager->flush();
 
-            return $this->redirectToRoute('pago_cliente_index');
+            return $this->redirectToRoute('servicio_new',[
+                'idpago'=> $pagoCliente->getId(),
+                'idpaq'=> $id_select_produc,
+            ]);
         }
 
         return $this->render('pago_cliente/new.html.twig', [

@@ -22,7 +22,20 @@ class ServicioRepository extends ServiceEntityRepository
     // /**
     //  * @return Servicio[] Returns an array of Servicio objects
     //  */
+
+    public function findUser($value)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.user = :val')
+            ->setParameter('val', $value)
+            ->orderBy('p.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
     /*
+    
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('s')

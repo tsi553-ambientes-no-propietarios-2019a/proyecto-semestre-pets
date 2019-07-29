@@ -5,8 +5,6 @@
         <div class="col-lg-8">
             <div class="p-2 flex-column border border-secondary rounded-lg" style="margin-top: 25px; background-color: #FFF;">
                 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-                    {{form_row(form)}}
-
                     {{ form_widget(form) }}
                     <div>
                         <input type="submit" class="btn btn-primary" value="{{ 'registration.submit'|trans }}" />

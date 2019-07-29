@@ -23,17 +23,17 @@ class MascotaRepository extends ServiceEntityRepository
       * @return Mascota[] Returns an array of Mascota objects
       */
     
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('m.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
+      public function findUser($value)
+      {
+          return $this->createQueryBuilder('p')
+              ->andWhere('p.user = :val')
+              ->setParameter('val', $value)
+              ->orderBy('p.id', 'ASC')
+              ->setMaxResults(10)
+              ->getQuery()
+              ->getResult()
+          ;
+      }
     
     public function findOneBySomeField($value): ?Mascota
     {

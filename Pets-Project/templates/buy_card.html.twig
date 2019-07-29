@@ -1,0 +1,30 @@
+<h1 class="display-2 text-center">Te recomendamos estos paquetes</h1>
+
+<div class="container">
+    <div class="row">
+        {% for paquete in paquetes %}
+            <div class="col-sm">   
+                <div class="card" style="width: 18rem;">
+                    <div class="card-header p-3 mb-2 bg-success text-white">
+                    {{ paquete.TipoMasc }}
+                    </div>
+                    <img src="{{ vich_uploader_asset(paquete, 'imageFile') }}" alt="{{ paquete.id }}" class="card-img-top" height="200">
+                    <div class="card-body">
+                        <p class="card-text">
+                            Alimento: {{ paquete.Alimento }} <br>
+                            Precio: {{ paquete.Precio }} <br>
+                            Tipo: {{ paquete.descripcion }} <br>
+                        </p>
+
+                        <a href="{{ path('pago_cliente_new', {'id': paquete.id}) }}" class="btn btn-danger">COMPRAR</a>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            
+            <p>No ha registrado ningun paquete</p>
+            
+        {% endfor %}
+    </div>
+</div>    
+<br>

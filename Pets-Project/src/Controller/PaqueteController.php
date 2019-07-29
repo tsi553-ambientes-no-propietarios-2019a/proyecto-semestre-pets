@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Paquete;
 use App\Form\Paquete1Type;
 use App\Repository\PaqueteRepository;
@@ -10,7 +11,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use App\Entity\User;
 
 /**
  * @Route("/paquete")
@@ -24,10 +24,13 @@ class PaqueteController extends AbstractController
      */
     public function index(PaqueteRepository $paqueteRepository): Response
     {
+        $paquete = new Paquete();
+        $id = $this->getUser();
         return $this->render('paquete/index.html.twig', [
-            'paquetes' => $paqueteRepository->findAll(),
+            'paquetes' => $paqueteRepository->findUser($id->getId()),
         ]);
     }
+
 
     /**
      * @Route("/new", name="paquete_new", methods={"GET","POST"})

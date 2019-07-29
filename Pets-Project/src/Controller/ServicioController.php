@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use App\Entity\Paquete;
+use App\Entity\PagoCliente;
 use App\Entity\Servicio;
 use App\Form\ServicioType;
 use App\Repository\ServicioRepository;
@@ -10,8 +13,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use App\Entity\User;
-
 
 /**
  * @Route("/servicio")
@@ -25,8 +26,10 @@ class ServicioController extends AbstractController
      */
     public function index(ServicioRepository $servicioRepository): Response
     {
+        $id = $this->getUser();
+
         return $this->render('servicio/index.html.twig', [
-            'servicios' => $servicioRepository->findAll(),
+            'servicios' => $servicioRepository->findUser($id->getId()),
         ]);
     }
 
@@ -38,15 +41,29 @@ class ServicioController extends AbstractController
     public function new(Request $request): Response
     {
         $servicio = new Servicio();
+
+        $id_select_package = (int) $_GET['idpaq'];
+        $id_select_pay = (int) $_GET['idpago'];
+        
+        $repository = $this->getDoctrine()->getRepository(Paquete::class);
+        $repository1 = $this->getDoctrine()->getRepository(PagoCliente::class);
+
+        $id_paquete = $repository->find($id_select_package);
+        $ip_pago = $repository1->find($id_select_pay);
+
         $form = $this->createForm(ServicioType::class, $servicio);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $servicio->setUser($this->getUser());
+            $servicio->setPagoCliente($ip_pago);
+            $servicio->setServicioPaquete($id_paquete);
+
             $entityManager->persist($servicio);
             $entityManager->flush();
 
-            return $this->redirectToRoute('servicio_index');
+            return $this->redirectToRoute('buy_confirm');
         }
 
         return $this->render('servicio/new.html.twig', [
@@ -106,4 +123,5 @@ class ServicioController extends AbstractController
 
         return $this->redirectToRoute('servicio_index');
     }
+
 }

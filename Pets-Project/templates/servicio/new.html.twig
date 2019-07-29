@@ -1,15 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Servicio{% endblock %}
+{% block title %}Nuevo Servicio{% endblock %}
 
 {% block body %}
-<<<<<<< HEAD
  {{ parent()}}
-=======
->>>>>>> 9290f0b2ebcdca55e13e8378efaa9b2fc905c190
-    <h1>Create new Servicio</h1>
+ <div class="container">
+    <h1 class="display-2 text-center">Contrata tu servicio</h1>
+    <br>
+    <p class="display-4">Elige la hora de inicio y final para contratar tu servicio </p>
 
     {{ include('servicio/_form.html.twig') }}
 
-    <a href="{{ path('servicio_index') }}">back to list</a>
+    <a href="{{ path('servicio_index') }}" class="btn btn-primary">back to list</a>
+</div>
 {% endblock %}

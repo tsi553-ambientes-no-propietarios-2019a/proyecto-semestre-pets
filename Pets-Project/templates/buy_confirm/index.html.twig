@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmacion de compra{% endblock %}
+
+{% block body %}
+    {{parent()}}
+    <br>
+    <div class="container">
+        <h1 class="display-3 text-center">Gracias por su Compra</h1>
+        <br>
+        <br>
+        <a href="{{ path('servicio_index')}}">mostar compras</a>
+    </div>
+    
+{% endblock %}

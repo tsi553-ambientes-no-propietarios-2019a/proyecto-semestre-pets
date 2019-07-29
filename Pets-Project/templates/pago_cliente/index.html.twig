@@ -14,7 +14,9 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>fecha de creación</th>
-                <th>Acciones</th>
+                {% if is_granted("ROLE_SUPER_ADMIN") %}
+                    <th>Acciones</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -24,10 +26,13 @@
                 <td>{{ pago_cliente.nombre }}</td>
                 <td>{{ pago_cliente.apellido }}</td>
                 <td>{{ pago_cliente.createAt ? pago_cliente.createAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('pago_cliente_show', {'id': pago_cliente.id}) }}" class="btn btn-primary">show</a>
-                    <a href="{{ path('pago_cliente_edit', {'id': pago_cliente.id}) }}" class="btn btn-danger">edit</a>
-                </td>
+            
+                {% if is_granted("ROLE_SUPER_ADMIN") %}
+                    <td>
+                        <a href="{{ path('pago_cliente_show', {'id': pago_cliente.id}) }}" class="btn btn-primary">show</a>
+                        <a href="{{ path('pago_cliente_edit', {'id': pago_cliente.id}) }}" class="btn btn-danger">edit</a>
+                    </td>
+                {% endif %}
             </tr>
         {% else %}
             <tr>
@@ -37,7 +42,6 @@
         </tbody>
     </table>
     <br>
-    <a href="{{ path('pago_cliente_new') }}" class="btn btn-info btn-lg">Ingresar nuevo</a>
 </div>
 {% endblock %}
 

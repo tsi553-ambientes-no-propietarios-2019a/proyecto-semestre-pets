@@ -3,15 +3,20 @@
 {% block title %}Nueva Mascota{% endblock %}
 
 {% block body %}
-{{parent()}}
-<div class="container">
-    <h1> <center> Ingresar Mascota </center> </h1>
-
-    {{ include('mascota/_form.html.twig') }}
-
-    <a href="{{ path('mascota_index') }}">
-     <button style=color:pink class="btn btn-secondary">{{ button_label|default('volver') }}</button>
-    </a>
-    </div>
+    {{parent()}}
+    <br>
+        <div class="container">
+            <h1 class="display-3 text-center">Registra tu mascota</h1>
+            <br>
+            <div class="row">
+                <div class="col-md border-right">
+                 {{ include('mascota/_form.html.twig') }}
+                </div>
+                <div class="col-sm-5">
+                
+                </div>
+            </div>
+            <a href="{{ path('mascota_index') }}" class="btn btn-primary">back to list</a>
+        </div>
 {% endblock %}
 

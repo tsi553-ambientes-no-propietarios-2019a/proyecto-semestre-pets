@@ -34,7 +34,7 @@ class HostController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('fos_user_security_logout', [
-                'id' => $user->getId(),
+                'text'=> 'ingrese nuevamente sesion',
             ]);
         }
 

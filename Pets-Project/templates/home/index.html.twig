@@ -7,20 +7,20 @@
 
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-            <img src="{{ asset('img/carousel/carusel1.jpg')}}" class="d-block w-100">
+            <div class="carousel-item">
+                <img src="{{ asset('img/carousel/carusel1.jpg')}}" class="d-block w-100">
             </div>
             <div class="carousel-item active">
-            <img src="{{ asset('img/carousel/carusel2.jpg')}}" class="d-block w-100">
+                <img src="{{ asset('img/carousel/carusel2.jpg')}}" class="d-block w-100">
             </div>
             <div class="carousel-item ">
-            <img src="{{ asset('img/carousel/carusel3.jpg')}}" class="d-block w-100">
+                <img src="{{ asset('img/carousel/carusel3.jpg')}}" class="d-block w-100">
             </div>
         </div>
-        </div>
-        <div class="cover-container w-100 h-100 p-5">
-            <main role="main" class="inner cover">
-                <div>
+    </div>
+    <div class="cover-container w-100 h-100 p-5">
+        <main role="main" class="inner cover">
+            <div>
                 <h2 class="cover-heading">Paquetes disponibles</h2>
                 <div class="row">
                     <div class="col-sm-3">
@@ -65,11 +65,14 @@
                     </div>
                 </div>
                 <br>
-                </div>
-                <p class="lead">
-                    Los paquetes están sujetas a cambios. Algunas paquetes podrían no estar disponibles en todas las regiones o en todos los idiomas.
-                </p>
-            </main>
-        </div>
+            </div>
+            <p class="lead">
+                Los paquetes están sujetas a cambios. Algunas paquetes podrían no estar disponibles en todas las regiones o en todos los idiomas.
+            </p>
+        </main>
+    </div>
+
+            {{ include('buy_card.html.twig')}}     
+
 {% endblock %}
 

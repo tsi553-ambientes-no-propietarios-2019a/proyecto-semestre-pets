@@ -1,12 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Paquete{% endblock %}
+{% block title %}Nuevo Paquete{% endblock %}
 
 {% block body %}
-{{ parent()}}
-    <h1>Create new Paquete</h1>
-
-    {{ include('paquete/_form.html.twig') }}
-
-    <a href="{{ path('paquete_index') }}">back to list</a>
+    {{ parent()}}
+    <br>
+        <div class="container">
+            <h1 class="display-3 text-center">Crear tu nuevo paquete</h1>
+            <br>
+            <div class="row">
+                <div class="col-md border-right">
+                    {{ include('paquete/_form.html.twig') }}
+                </div>
+                <div class="col-sm-5">
+                
+                </div>
+            </div>
+            <a href="{{ path('paquete_index') }}" class="btn btn-primary">back to list</a>
+        </div>
 {% endblock %}

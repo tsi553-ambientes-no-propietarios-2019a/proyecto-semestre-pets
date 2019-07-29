@@ -24,14 +24,16 @@ class MascotaController extends AbstractController
     /**
      * @Route("/", name="mascota_index", methods={"GET"})
      * 
-     * Require ROLE_USER for only this controller method.
-     * 
      * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function index(MascotaRepository $mascotaRepository): Response
     {
+        $mascotum = new Mascota();
+        $id = $this->getUser();
+
+        echo $mascotum->getId();
         return $this->render('mascota/index.html.twig', [
-            'mascotas' => $mascotaRepository->findAll(),
+            'mascotas' => $mascotaRepository->findUser($id->getId()),
         ]);
     }
 
