@@ -22,7 +22,9 @@
     {% if not is_granted("IS_AUTHENTICATED_FULLY")%}
         <form class="form-inline text-center">
           <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+          <a href="{{path('home')}}" class="navbar-brand my-2 my-sm-0" type="submit">
+            <img src="{{asset('img/iconos/search.png')}}" style="margin-left:25px" width="30" height="30">
+          </a>
         </form>
     {% endif %}
 
