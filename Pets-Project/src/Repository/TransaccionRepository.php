@@ -19,14 +19,14 @@ class TransaccionRepository extends ServiceEntityRepository
         parent::__construct($registry, Transaccion::class);
     }
 
-    // /**
-    //  * @return Transaccion[] Returns an array of Transaccion objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Transaccion[] Returns an array of Transaccion objects
+     */
+    
+    public function findUser($value)
     {
         return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
+            ->andWhere('t.id = :val')
             ->setParameter('val', $value)
             ->orderBy('t.id', 'ASC')
             ->setMaxResults(10)
@@ -34,7 +34,7 @@ class TransaccionRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Transaccion

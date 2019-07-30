@@ -30,7 +30,6 @@
                 <td>{{ transaccion.createAt ? transaccion.createAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('transaccion_show', {'id': transaccion.id}) }}">show</a>
-                    <a href="{{ path('transaccion_edit', {'id': transaccion.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -40,7 +39,5 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('transaccion_new') }}" class="btn btn-primary">Create new</a>
 </div>
 {% endblock %}

@@ -114,6 +114,17 @@
                   {% endif %}
                 </div>
               </li>
+            {% if is_granted("ROLE_SUPER_ADMIN") %}
+
+              <li class="nav-item dropdown">
+                <a class="nav-link text-muted dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  Transacciones
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="{{ path('transaccion_index') }}">Realiadas</a>
+                </div>
+              </li>
+            {% endif %}
             
             <span> <a class="nav-item nav-link text-muted" href="{{ path('fos_user_security_logout') }}"> SALIR </a></span>
           

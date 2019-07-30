@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Transaccion;
+use App\Entity\PagoCliente;
 use App\Form\TransaccionType;
 use App\Repository\TransaccionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,14 +14,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/transaccion")
- * 
- * @IsGranted("ROLE_SUPER_ADMIN")
- * 
  */
 class TransaccionController extends AbstractController
 {
     /**
      * @Route("/", name="transaccion_index", methods={"GET"})
+     * @IsGranted("ROLE_SUPER_ADMIN")
+     * 
      */
     public function index(TransaccionRepository $transaccionRepository): Response
     {
@@ -31,29 +31,39 @@ class TransaccionController extends AbstractController
 
     /**
      * @Route("/new", name="transaccion_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_USER")
      */
     public function new(Request $request): Response
     {
         $transaccion = new Transaccion();
-        $form = $this->createForm(TransaccionType::class, $transaccion);
-        $form->handleRequest($request);
+    
+        $id_pay = (int) $_GET['id'];
+        $id_pack = (int) $_GET['id_pack'];
+        $description = $_GET['product'];
+        $monto = (int) $_GET['monto'];
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($transaccion);
-            $entityManager->flush();
+        $repository1 = $this->getDoctrine()->getRepository(PagoCliente::class);
+        $pago = $repository1->find($id_pay);
+        
+        $entityManager = $this->getDoctrine()->getManager();
+        $transaccion->setMonto($monto);
+        $transaccion->setProducto($description);
+        $transaccion->setDivisa('usd');
+        $transaccion->setEstado('successfull');
+        $transaccion->setCreateAt(new \DateTime("now"));
+        $transaccion->setTransaccion($pago);
+        $entityManager->persist($transaccion);
+        $entityManager->flush();
 
-            return $this->redirectToRoute('transaccion_index');
-        }
-
-        return $this->render('transaccion/new.html.twig', [
-            'transaccion' => $transaccion,
-            'form' => $form->createView(),
+        return $this->redirectToRoute('cobro_anf_new',[
+            'id_trans' => $transaccion->getId(),
+            'id_pack' => $id_pack,
         ]);
     }
 
     /**
      * @Route("/{id}", name="transaccion_show", methods={"GET"})
+     * @IsGranted("ROLE_SUPER_ADMIN")
      */
     public function show(Transaccion $transaccion): Response
     {
@@ -63,29 +73,8 @@ class TransaccionController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="transaccion_edit", methods={"GET","POST"})
-     */
-    public function edit(Request $request, Transaccion $transaccion): Response
-    {
-        $form = $this->createForm(TransaccionType::class, $transaccion);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('transaccion_index', [
-                'id' => $transaccion->getId(),
-            ]);
-        }
-
-        return $this->render('transaccion/edit.html.twig', [
-            'transaccion' => $transaccion,
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
      * @Route("/{id}", name="transaccion_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_SUPER_ADMIN")
      */
     public function delete(Request $request, Transaccion $transaccion): Response
     {

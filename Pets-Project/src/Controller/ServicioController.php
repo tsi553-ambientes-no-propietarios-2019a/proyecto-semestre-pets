@@ -48,8 +48,8 @@ class ServicioController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Paquete::class);
         $repository1 = $this->getDoctrine()->getRepository(PagoCliente::class);
 
-        $id_paquete = $repository->find($id_select_package);
-        $ip_pago = $repository1->find($id_select_pay);
+        $paquete = $repository->find($id_select_package);
+        $pago = $repository1->find($id_select_pay);
 
         $form = $this->createForm(ServicioType::class, $servicio);
         $form->handleRequest($request);
@@ -57,13 +57,19 @@ class ServicioController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $servicio->setUser($this->getUser());
-            $servicio->setPagoCliente($ip_pago);
-            $servicio->setServicioPaquete($id_paquete);
+            $servicio->setPagoCliente($pago);
+            $servicio->setServicioPaquete($paquete);
 
             $entityManager->persist($servicio);
             $entityManager->flush();
 
-            return $this->redirectToRoute('buy_confirm');
+            //return $this->redirectToRoute('buy_confirm');
+            return $this->redirectToRoute('transaccion_new', [
+                'id' => $id_select_pay,
+                'id_pack' => $id_select_package,
+                'product' => $paquete->getDescripcion(),
+                'monto' => $paquete->getPrecio(),
+            ]);
         }
 
         return $this->render('servicio/new.html.twig', [

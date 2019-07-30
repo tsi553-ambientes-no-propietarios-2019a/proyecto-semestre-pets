@@ -19,14 +19,14 @@ class PagoClienteRepository extends ServiceEntityRepository
         parent::__construct($registry, PagoCliente::class);
     }
 
-    // /**
-    //  * @return PagoCliente[] Returns an array of PagoCliente objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+      * @return PagoCliente[] Returns an array of PagoCliente objects
+     */
+    
+    public function findUser($value)
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
+            ->andWhere('p.user = :val')
             ->setParameter('val', $value)
             ->orderBy('p.id', 'ASC')
             ->setMaxResults(10)
@@ -34,7 +34,7 @@ class PagoClienteRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?PagoCliente

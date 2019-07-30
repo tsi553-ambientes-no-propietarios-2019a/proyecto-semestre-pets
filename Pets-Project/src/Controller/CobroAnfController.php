@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\CobroAnf;
+use App\Entity\Paquete;
+use App\Entity\Transaccion;
 use App\Form\CobroAnfType;
 use App\Repository\CobroAnfRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,27 +35,36 @@ class CobroAnfController extends AbstractController
     /**
      * @Route("/new", name="cobro_anf_new", methods={"GET","POST"})
      * 
-     * @IsGranted("ROLE_ADMIN")
+     * @IsGranted("ROLE_USER")
      * 
      */
     public function new(Request $request): Response
     {
         $cobroAnf = new CobroAnf();
-        $form = $this->createForm(CobroAnfType::class, $cobroAnf);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($cobroAnf);
-            $entityManager->flush();
+        $id_pack = (int) $_GET['id_pack'];
+        $id_tras = (int) $_GET['id_trans'];
+        $repository = $this->getDoctrine()->getRepository(Paquete::class);
+        $paquete = $repository->find($id_pack);
 
-            return $this->redirectToRoute('cobro_anf_index');
-        }
+        $repository1 = $this->getDoctrine()->getRepository(Transaccion::class);
+        $transaccion = $repository1->find($id_tras);
 
-        return $this->render('cobro_anf/new.html.twig', [
-            'cobro_anf' => $cobroAnf,
-            'form' => $form->createView(),
-        ]);
+        // operacion de comision
+        $comision = (int) $paquete->getPrecio() * 0.80;
+        $aux = (string) $comision;
+        // llamar a objeto usario
+        $user = $paquete->getUser();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $cobroAnf->setUser($user);
+        $cobroAnf->setIdTransaccion($transaccion);
+        $cobroAnf->setComision($aux);
+        $entityManager->persist($cobroAnf);
+        $entityManager->flush();
+
+         return $this->redirectToRoute('buy_confirm');
+        
     }
 
     /**
@@ -64,30 +76,6 @@ class CobroAnfController extends AbstractController
     {
         return $this->render('cobro_anf/show.html.twig', [
             'cobro_anf' => $cobroAnf,
-        ]);
-    }
-
-    /**
-     * @Route("/{id}/edit", name="cobro_anf_edit", methods={"GET","POST"})
-     * 
-     * @IsGranted("ROLE_SUPER_ADMIN")
-     */
-    public function edit(Request $request, CobroAnf $cobroAnf): Response
-    {
-        $form = $this->createForm(CobroAnfType::class, $cobroAnf);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('cobro_anf_index', [
-                'id' => $cobroAnf->getId(),
-            ]);
-        }
-
-        return $this->render('cobro_anf/edit.html.twig', [
-            'cobro_anf' => $cobroAnf,
-            'form' => $form->createView(),
         ]);
     }
 

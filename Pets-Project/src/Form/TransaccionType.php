@@ -11,14 +11,7 @@ class TransaccionType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('producto')
-            ->add('monto')
-            ->add('divisa')
-            ->add('estado')
-            ->add('create_at')
-            ->add('transaccion')
-        ;
+        
     }
 
     public function configureOptions(OptionsResolver $resolver)
