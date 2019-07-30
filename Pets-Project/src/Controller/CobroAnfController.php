@@ -27,8 +27,10 @@ class CobroAnfController extends AbstractController
      */
     public function index(CobroAnfRepository $cobroAnfRepository): Response
     {
+        $cobro = new CobroAnf();
+        $id = $this->getUser();
         return $this->render('cobro_anf/index.html.twig', [
-            'cobro_anfs' => $cobroAnfRepository->findAll(),
+            'cobro_anfs' => $cobroAnfRepository->findUser($id->getId()),
         ]);
     }
 

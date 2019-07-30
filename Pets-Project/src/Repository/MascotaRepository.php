@@ -25,10 +25,10 @@ class MascotaRepository extends ServiceEntityRepository
     
       public function findUser($value)
       {
-          return $this->createQueryBuilder('p')
-              ->andWhere('p.user = :val')
+          return $this->createQueryBuilder('m')
+              ->andWhere('m.user = :val')
               ->setParameter('val', $value)
-              ->orderBy('p.id', 'ASC')
+              ->orderBy('m.user', 'ASC')
               ->setMaxResults(10)
               ->getQuery()
               ->getResult()

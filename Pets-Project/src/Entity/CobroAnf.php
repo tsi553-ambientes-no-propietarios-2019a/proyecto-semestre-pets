@@ -22,13 +22,13 @@ class CobroAnf
     private $comision;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Transaccion", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Transaccion", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $Id_Transaccion;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="cobroAnf", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="cobroAnf", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;

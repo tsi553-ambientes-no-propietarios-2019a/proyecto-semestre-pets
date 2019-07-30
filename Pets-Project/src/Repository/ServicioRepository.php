@@ -25,10 +25,10 @@ class ServicioRepository extends ServiceEntityRepository
 
     public function findUser($value)
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.id = :val')
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.user = :val')
             ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
+            ->orderBy('s.user', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()

@@ -22,19 +22,19 @@ class CobroAnfRepository extends ServiceEntityRepository
     // /**
     //  * @return CobroAnf[] Returns an array of CobroAnf objects
     //  */
-    /*
-    public function findByExampleField($value)
+    
+    public function findUser($value)
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
+            ->andWhere('c.user = :val')
             ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
+            ->orderBy('c.user', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?CobroAnf

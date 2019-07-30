@@ -16,7 +16,6 @@
                 <th>Divisa</th>
                 <th>Estado</th>
                 <th>Create_at</th>
-                <th>actions</th>
             </tr>
         </thead>
         <tbody>
@@ -28,9 +27,7 @@
                 <td>{{ transaccion.divisa }}</td>
                 <td>{{ transaccion.estado }}</td>
                 <td>{{ transaccion.createAt ? transaccion.createAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('transaccion_show', {'id': transaccion.id}) }}">show</a>
-                </td>
+            
             </tr>
         {% else %}
             <tr>

@@ -31,7 +31,8 @@ class MascotaController extends AbstractController
         $mascotum = new Mascota();
         $id = $this->getUser();
 
-        echo $mascotum->getId();
+        // echo $id->getId();
+        // die();
         return $this->render('mascota/index.html.twig', [
             'mascotas' => $mascotaRepository->findUser($id->getId()),
         ]);

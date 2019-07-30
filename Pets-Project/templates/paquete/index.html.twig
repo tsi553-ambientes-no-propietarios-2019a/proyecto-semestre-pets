@@ -6,11 +6,13 @@
 {{ parent()}}
     <h1 class="display-2 text-center">Tus paquetes creados</h1>
     
+    {% if not is_granted("ROLE_SUPER_ADMIN") %}
     <br>
     <div class="container">
         <a href="{{ path('paquete_new') }}" class="btn btn-primary">Crear nuevo paquete</a>
     </div>
     <br>
+    {% endif %}
 
     <div class="container">
         <div class="row">

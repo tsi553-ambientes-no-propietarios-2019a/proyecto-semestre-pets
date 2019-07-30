@@ -7,6 +7,14 @@
 </div>
 <div class="container">
     <div class="row">
+        {% if is_granted("ROLE_ANFITRION") %}
+        <div class="col-lg text-center">
+            <p> Crea tu paquete promocional antes de continuar  </p>
+            <span> 
+                <a class="btn btn-primary" href="{{ path('mascota_new')}}"> Registrar</a>
+            </span>
+        </div>
+        {% endif %}
         <div class="col-lg text-center">
             <p> Registra a tu mascota antes de continuar  </p>
             <span> 
