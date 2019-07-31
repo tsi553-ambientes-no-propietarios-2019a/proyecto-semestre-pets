@@ -4,20 +4,17 @@
       <a href="{{path('home')}}" class="navbar-brand">
         <img src="{{asset('img/logo.jpeg')}}" style="margin-left:25px"  width="90" height="60">
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
     {% endif %}
     {% if is_granted("IS_AUTHENTICATED_FULLY")%}
       <a href="{{path('fos_user_profile_show')}}" class="navbar-brand">
         <img src="{{asset('img/logo.jpeg')}}" style="margin-left:25px" width="90" height="60">
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
     {% endif %}
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
   
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <!-- BUSQUEDA -->
     {% if not is_granted("IS_AUTHENTICATED_FULLY")%}
         <form class="form-inline text-center">
@@ -28,7 +25,7 @@
         </form>
     {% endif %}
 
-    <ul class="nav nav-tabs justify-content-end">
+    <ul class="navbar-nav mr-auto justify-content-end">
      
           <!-- PARA USUARIOS QUE NO TIENEN UN ROL -->
           {% if not is_granted("IS_AUTHENTICATED_FULLY")%}
@@ -51,14 +48,13 @@
 
           {% if is_granted("IS_AUTHENTICATED_FULLY") %}
             {% if is_granted("ROLE_ANFITRION") %}
-              <li class="nav-item">              
+              <li class="nav-item text-muted">              
                 <a href="{{ path('fos_user_profile_show')}}">
                 <img src="{{ vich_uploader_asset(app.user, 'imageFile') }}" alt="{{ app.user.username }}" class="rounded-circle border border-secondary" width="40" height="40">
+                <span class="nav-item text-muted">Hola {{ app.user.username }}</span>
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link text-muted" href="{{ path('fos_user_profile_show')}}">Hola {{ app.user.username }}</a>
-              </li>
+             
               <li class="nav-item  dropdown">
                 <a class="nav-link text-muted dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> 
                 Paquetes 
