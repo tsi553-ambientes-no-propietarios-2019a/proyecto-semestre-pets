@@ -4,10 +4,12 @@
 
 {% block body %}
     {{parent()}}
+
     <br>
     <div class="container">
         <h1 class="display-3 text-center">Gracias por su Compra</h1>
         <br>
+        <img src="{{ asset('img/mascotas_2.gif')}}" class="d-block w-100" width="50" height="200">
         <br>
         <a href="{{ path('servicio_index')}}">mostar compras</a>
     </div>

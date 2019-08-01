@@ -9,6 +9,8 @@
     <div class="row justify-content-md-center">
         <div class="col-md-7">
         <h1 class="text-central">Forma de Pago</h1>
+        <img src="{{ asset('img/pago.gif')}}" class="d-block w-100" width="10" height="200"> 
+        <br>
         <form method="post" id="payment-form">
             <div class="form-row">
                 <div id="card-element" class="form-control">
@@ -25,7 +27,7 @@
         </div>
         <div class="col-md-2">
             <a href="{{ path('pago_cliente_index') }}" class="btn btn-info btn-lg">back to list</a>
-        </div> 
+        </div>
     </div>
 </div>
 {% endblock %}

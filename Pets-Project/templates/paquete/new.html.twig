@@ -8,14 +8,16 @@
         <div class="container">
             <h1 class="display-3 text-center">Crear tu nuevo paquete</h1>
             <br>
-            <div class="row">
+            <div class="center">
+                <img src="{{ asset('img/mascotas_2.gif')}}" class="d-block w-100" width="50" height="200">
+                <br>
                 <div class="col-md border-right">
                     {{ include('paquete/_form.html.twig') }}
                 </div>
                 <div class="col-sm-5">
-                
-                </div>
+                <a href="{{ path('paquete_index') }}" class="btn btn-primary">back to list</a>
             </div>
-            <a href="{{ path('paquete_index') }}" class="btn btn-primary">back to list</a>
+
+            </div>  
         </div>
 {% endblock %}

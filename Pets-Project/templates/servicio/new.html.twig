@@ -8,7 +8,10 @@
     <h1 class="display-2 text-center">Contrata tu servicio</h1>
     <br>
     <p class="display-4">Elige la hora de inicio y final para contratar tu servicio </p>
-
+    <center>
+    <img src="{{ asset('img/hora.gif')}}"  width="150" height="200">
+    </center>
+    <br>
     {{ include('servicio/_form.html.twig') }}
 
     <a href="{{ path('servicio_index') }}" class="btn btn-primary">back to list</a>
