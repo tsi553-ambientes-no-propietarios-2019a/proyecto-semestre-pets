@@ -3,5 +3,10 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
+<center><br>
+<br>
     <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+  <br>
+      <img src="{{ asset('img/carousel/carusel3.jpg')}}" >    
+                </center>
 {% endblock fos_user_content %}

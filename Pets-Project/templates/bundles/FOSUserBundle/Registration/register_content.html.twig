@@ -3,17 +3,28 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
-            <div class="p-2 flex-column border border-secondary rounded-lg" style="margin-top: 25px; background-color: #FFF;">
+
+            <div class="p-2 flex-column border border-secondary rounded-lg" center style="margin-top: 25px; background-color: #FFF;">
+
+         <body background="img/carousel/carusel5.jpg">
+            <center>
                 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
                     {{ form_widget(form) }}
+                    <img src="{{ asset('img/carousel/carusel4.jpg')}}" class="d-block w-100">
+                    </center>
+                    <br>
                     <div>
-                        <input type="submit" class="btn btn-primary" value="{{ 'registration.submit'|trans }}" />
+                    <center>
+                        <input type="submit" class="btn btn-primary" value="{{ 'registration.submit'|trans }}" />  
+  </center>
                     </div>
                 {{ form_end(form) }}
             </div>
+            </body>
         </div>
-            <p>alguna imagen</p>
+            
         <div class="col-sm">
+
         </div>
     </div>
 </div>  

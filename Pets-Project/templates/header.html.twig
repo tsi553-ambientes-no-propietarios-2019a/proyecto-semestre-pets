@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <!-- ICONO DEL NAV -->
     {% if not is_granted("IS_AUTHENTICATED_FULLY")%}
       <a href="{{path('home')}}" class="navbar-brand">
@@ -17,12 +17,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <!-- BUSQUEDA -->
     {% if not is_granted("IS_AUTHENTICATED_FULLY")%}
-        <form class="form-inline text-center">
-          <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Search" aria-label="Search">
-          <a href="{{path('home')}}" class="navbar-brand my-2 my-sm-0" type="submit">
-            <img src="{{asset('img/iconos/search.png')}}" style="margin-left:25px" width="30" height="30">
-          </a>
-        </form>
+       
     {% endif %}
 
     <ul class="navbar-nav mr-auto justify-content-end">
@@ -30,33 +25,33 @@
           <!-- PARA USUARIOS QUE NO TIENEN UN ROL -->
           {% if not is_granted("IS_AUTHENTICATED_FULLY")%}
             <li class="nav-item active">
-              <a class="nav-link text-muted" href="{{path('ayuda')}}">Ayuda</a> 
+              <a class="nav-link text-white" href="{{path('ayuda')}}"><img src="{{asset('img/cogs.png')}}">Contactos</a> 
             </li>
             <li class="nav-item">
-              <a class="nav-link text-muted" href="{{path('nosotros')}}">Nosotros</a>
+              <a class="nav-link text-white" href="{{path('nosotros')}}"><img src="{{asset('img/user-tie.png')}}">Nosotros</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-muted" href="{{path('home')}}">Home</a>
+              <a class="nav-link text-white" href="{{path('home')}}"><img src="{{asset('img/home.png')}}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-muted" href="{{path('fos_user_registration_register')}}">Registro</a>
+              <a class="nav-link text-white" href="{{path('fos_user_registration_register')}}"><img src="{{asset('img/floppy-disk.png')}}">Registro</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-muted" href="{{path('fos_user_security_login')}}">Login</a>
+              <a class="nav-link text-white" href="{{path('fos_user_security_login')}}"><img src="{{asset('img/spinner9.png')}}">Login</a>
             </li>
           {% endif %}      
 
           {% if is_granted("IS_AUTHENTICATED_FULLY") %}
             {% if is_granted("ROLE_ANFITRION") %}
-              <li class="nav-item text-muted">              
+              <li class="nav-item text-white">              
                 <a href="{{ path('fos_user_profile_show')}}">
                 <img src="{{ vich_uploader_asset(app.user, 'imageFile') }}" alt="{{ app.user.username }}" class="rounded-circle border border-secondary" width="40" height="40">
-                <span class="nav-item text-muted">Hola {{ app.user.username }}</span>
+                <span class="nav-item text-white">Hola {{ app.user.username }}</span>
                 </a>
               </li>
              
               <li class="nav-item  dropdown">
-                <a class="nav-link text-muted dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> 
+                <a class="nav-link text-white dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> 
                 Paquetes 
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -65,7 +60,7 @@
                 </div>
               </li>
               <li class="nav-item dropdown">              
-                <a class="nav-link text-muted dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> 
+                <a class="nav-link text-white dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> 
                 Mascota 
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -80,13 +75,13 @@
                 </a>
               </li>
               <li class="nav-item">              
-                <a class="nav-link text-muted" href="{{ path('fos_user_profile_show')}}">Hola {{ app.user.username }}</a>
+                <a class="nav-link text-white" href="{{ path('fos_user_profile_show')}}">Hola {{ app.user.username }}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-muted" href="{{ path('host')}}"> Se Anfitrion</a> 
+                <a class="nav-link text-white" href="{{ path('host')}}"> Se Anfitrion</a> 
               </li>
               <li class="nav-item dropdown">              
-                <a class="nav-link text-muted dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> 
+                <a class="nav-link text-white dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> 
                 Mascota 
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -126,7 +121,16 @@
           
           {% endif %}
     </ul>
+
+
+<div class="social ">
+    <ul>
+
+      <li><a href="http://www.facebook.com" class="icon-facebook"><img src="{{asset('img/facebook.png')}}" > </a> 
+      <a href="http://www.twitter.com" class="icon-facebook"><img src="{{asset('img/twitter.png')}}" > 
+      </a> <a href="http://www.youtube.com" class="icon-facebook2"><img src="{{asset('img/youtube.png')}}" > </a>
+      </li>
+    </ul>
+
   </div>
 </nav>
-
-<br>
