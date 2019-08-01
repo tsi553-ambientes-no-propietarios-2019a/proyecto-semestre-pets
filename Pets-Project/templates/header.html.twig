@@ -1,5 +1,5 @@
-<div class="cover-container d-flex mx-auto flex-column" style="background-color: #FFF;">
-  <div class="row navbar">
+<div class="navbar navbar-dark bg-dark text-white flex-row">
+ 
     <div class="col-sm">
       <nav class="navbar">
         <a href="{{path('home')}}">
@@ -7,28 +7,21 @@
         </a>
       </nav>
     </div>
-    {% if not is_granted("IS_AUTHENTICATED_FULLY")%}
-    <div class="col-sm">
-      <nav class="navbar ">
-        <form class="form-inline">
-          <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-secondary" my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </nav>
-    </div>
-    {% endif %}
+
+
     <div class="col-md">
     <nav class="navbar navbar-expand-lg">
       <div class="collapse navbar-collapse">
-        <div class="navbar-nav text-right">
+      
 
           {% if not is_granted("IS_AUTHENTICATED_FULLY")%}
-            <a class="nav-item nav-link text-muted" href="{{path('ayuda')}}">Ayuda</a> 
-            <a class="nav-item nav-link text-muted" href="{{path('nosotros')}}">Nosotros</a>
-            <a class="nav-item nav-link text-muted active" href="{{path('home')}}">Home</a>
-            <a class="nav-item nav-link text-muted" href="{{path('fos_user_registration_register')}}">Registro</a>
-            <a class="nav-item nav-link text-muted" href="{{path('fos_user_security_login')}}">Login</a>   
-          {% endif %}      
+            <a class="nav-item nav-link text-white" href="{{path('ayuda')}}"><img src="{{asset('img/cogs.png')}}">Ayuda</a> 
+            <a class="nav-item nav-link text-white" href="{{path('nosotros')}}"><img src="{{asset('img/user-tie.png')}}">Nosotros</a>
+            <a class="nav-item nav-link text-white active" href="{{path('home')}}"><img src="{{asset('img/home.png')}}">Home</a>
+            <a class="nav-item nav-link text-white" href="{{path('fos_user_registration_register')}}"><img src="{{asset('img/floppy-disk.png')}}">Registro</a>
+            <a class="nav-item nav-link text-white" href="{{path('fos_user_security_login')}}"><img src="{{asset('img/spinner9.png')}}">Login</a>   
+          {% endif %}     
+
 
           {% if is_granted("IS_AUTHENTICATED_FULLY") %}
             
@@ -78,9 +71,30 @@
           
           {% endif %}
         </div>
+
       </div>
-    </div>
+
+      
+
+  
+
+      
     </nav>
-  </div>
+
+
+<div class="social ">
+
+<ul>
+
+
+<li><a href="http://www.facebook.com" class="icon-facebook"><img src="{{asset('img/facebook.png')}}" > 
+</a> 
+
+<a href="http://www.twitter.com" class="icon-facebook"><img src="{{asset('img/twitter.png')}}" > 
+</a> <a href="http://www.youtube.com" class="icon-facebook2"><img src="{{asset('img/youtube.png')}}" > 
+</a>
+</li>
+
+</ul>
 </div>
-<br>
+</div>
