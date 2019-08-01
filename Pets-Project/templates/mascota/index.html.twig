@@ -15,7 +15,7 @@
       <div>
       <img src="{{ asset('img/mascota/index.jpg')}}" class="d-block w-50" alt="...">
       </div>
-     <br>
+     <bre>
     <div class="container">
             <a href="{{ path('mascota_new') }}">
             <button type="button" class="btn btn-primary">Ingrese los datos de su mascota</button>
@@ -39,12 +39,15 @@
                         </div>
                         <img src="{{ vich_uploader_asset(mascotum, 'imageFile') }}" alt="{{ mascotum.name }}" height="200px">
                         <div class="card-body">
-                            <p class="card-text">
+                        <DIV align="left">
+                            <p class="card-text ">
                                 Nombre: {{ mascotum.name }}<br>
                                 Tipo: {{ mascotum.Type }} <br>
                                 Edad: {{ mascotum.age }} <br>
                                 Tamaño: {{ mascotum.raza }} <br>
+                                Sexo: {{ mascotum.sexo }} <br>
                             </p>
+                            </div>
                         <td>
                     
                     <a href="{{ path('mascota_show', {'id': mascotum.id}) }}">
