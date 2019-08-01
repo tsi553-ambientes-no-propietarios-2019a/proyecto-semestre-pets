@@ -11,9 +11,11 @@
 <header ">
     <center>
       <h1 class="display-3">Bienvenido a Mascotas!</h1>
+
+      <div>
       <img src="{{ asset('img/mascota/index.jpg')}}" class="d-block w-50" alt="...">
-      
- 
+      </div>
+     <br>
     <div class="container">
             <a href="{{ path('mascota_new') }}">
             <button type="button" class="btn btn-primary">Ingrese los datos de su mascota</button>
@@ -22,33 +24,28 @@
     
     </center>
 </header>
-<div class="cover-container w-80 h-80 p-5">
-<div style="text-align:center;">
-    
-    <table class="table table-borderless style="text-align:center">
-        <thead class="thead-dark">
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Age</th>
-                <th>Raza</th>
-                <th>Imagen</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for mascotum in mascotas %}
-            <tr>
-                <td>{{ mascotum.id }}</td>
-                <td>{{ mascotum.name }}</td>
-                <td>{{ mascotum.Type }}</td>
-                <td>{{ mascotum.age }}</td>
-                <td>{{ mascotum.raza }}</td>
-                <td><img src="{{ vich_uploader_asset(mascotum, 'imageFile') }}" alt="{{ mascotum.name }}" height="30"/><td>
-                
 
-                <td>
+
+<div class="cover-container w-80 h-80 p-4">
+<div style="text-align:center;">
+    <div class="container">
+    <div class="row justify-content-md-center">
+        <div class="row">
+            {% for mascotum in mascotas %}
+                <div class="col-sm">   
+                    <div class="card" style="width: 22rem;">
+                        <div class="card-header p-2 mb-4 bg-success text-white">
+                        
+                        </div>
+                        <img src="{{ vich_uploader_asset(mascotum, 'imageFile') }}" alt="{{ mascotum.name }}" height="200px">
+                        <div class="card-body">
+                            <p class="card-text">
+                                Nombre: {{ mascotum.name }}<br>
+                                Tipo: {{ mascotum.Type }} <br>
+                                Edad: {{ mascotum.age }} <br>
+                                Tamaño: {{ mascotum.raza }} <br>
+                            </p>
+                        <td>
                     
                     <a href="{{ path('mascota_show', {'id': mascotum.id}) }}">
                     <button type="button" class="btn btn-info">Mirar</button>
@@ -59,20 +56,21 @@
                     </a>
                     
                 </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">Aún no has ingresado datos</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                
+                <p>No ha registrado ninguna mascota</p>
+                
+            {% endfor %}
+        </div>
+    </div>    
+    <br>
     
-    
-
   </div>
-  
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>

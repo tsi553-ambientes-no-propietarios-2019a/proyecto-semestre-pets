@@ -7,10 +7,11 @@
  <div class="container">
     <h1 class="display-2 text-center">Contrata tu servicio</h1>
     <br>
-    <p class="display-4">Elige la hora de inicio y final para contratar tu servicio </p>
-
+ 
+    <p class="display-5">Elige la hora de inicio y final para contratar tu servicio </p>
+    
     {{ include('servicio/_form.html.twig') }}
 
-    <a href="{{ path('servicio_index') }}" class="btn btn-primary">back to list</a>
+    <a href="{{ path('servicio_index') }}" class="btn btn-secondary">Volver</a>
 </div>
 {% endblock %}

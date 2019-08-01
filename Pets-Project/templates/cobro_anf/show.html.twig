@@ -3,7 +3,7 @@
 {% block title %}CobroAnf{% endblock %}
 
 {% block body %}
-    <h1>CobroAnf</h1>
+    <h1>Contenido Cobro Anfitrión</h1>
 
     <table class="table">
         <tbody>
@@ -12,15 +12,15 @@
                 <td>{{ cobro_anf.id }}</td>
             </tr>
             <tr>
-                <th>Comision</th>
+                <th>Comisión</th>
                 <td>{{ cobro_anf.comision }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('cobro_anf_index') }}">back to list</a>
+    <a href="{{ path('cobro_anf_index') }}">Volver</a>
 
-    <a href="{{ path('cobro_anf_edit', {'id': cobro_anf.id}) }}">edit</a>
+    <a href="{{ path('cobro_anf_edit', {'id': cobro_anf.id}) }}">Editar</a>
 
     {{ include('cobro_anf/_delete_form.html.twig') }}
 {% endblock %}

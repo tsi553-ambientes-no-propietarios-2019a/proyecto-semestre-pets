@@ -35,7 +35,7 @@ class CobroAnfController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="cobro_anf_new", methods={"GET","POST"})
+     * @Route("/new", name="", methods={"GET","POST"})
      * 
      * @IsGranted("ROLE_USER")
      * 

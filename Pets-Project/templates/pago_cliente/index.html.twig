@@ -29,8 +29,8 @@
             
                 {% if is_granted("ROLE_SUPER_ADMIN") %}
                     <td>
-                        <a href="{{ path('pago_cliente_show', {'id': pago_cliente.id}) }}" class="btn btn-primary">show</a>
-                        <a href="{{ path('pago_cliente_edit', {'id': pago_cliente.id}) }}" class="btn btn-danger">edit</a>
+                        <a href="{{ path('pago_cliente_show', {'id': pago_cliente.id}) }}" class="btn btn-primary">Mirar</a>
+                        <a href="{{ path('pago_cliente_edit', {'id': pago_cliente.id}) }}" class="btn btn-danger">Editar</a>
                     </td>
                 {% endif %}
             </tr>

@@ -25,6 +25,9 @@
                     <th>actions</th>
                 {% endif %}
 
+
+
+
             </tr>
         </thead>
         <tbody>
@@ -35,8 +38,8 @@
                 <td>{{ servicio.HoraFin ? servicio.HoraFin|date('Y-m-d H:i:s') : '' }}</td>
                 {% if is_granted("ROLE_SUPER_ADMIN") %}
                 <td>
-                    <a href="{{ path('servicio_show', {'id': servicio.id}) }}">show</a>
-                    <a href="{{ path('servicio_edit', {'id': servicio.id}) }}">edit</a>
+                    <a href="{{ path('servicio_show', {'id': servicio.id}) }}">Mirar</a>
+                    <a href="{{ path('servicio_edit', {'id': servicio.id}) }}">Editar</a>
                 </td>
                 {% endif %}
             </tr>
