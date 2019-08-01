@@ -1,25 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}CobroAnf index{% endblock %}
+{% block title %}Cobro anfitrión{% endblock %}
 
 {% block body %}
-    <h1>CobroAnf index</h1>
+<center>
+      <h1 class="display-3">Cobro anfitrión!</h1>
+        <div>
+      <img src="{{ asset('img/mascota/cobAnf.jpg')}}" class="d-block w-50" alt="...">
+      </div>
 
-    <table class="table">
-        <thead>
+      <br>
+     <div class="row justify-content-md-center">  
+     <div class="col-6">
+    <table class="table table-striped" style="text-align:center;">
+     <thead class="thead-dark">
+        
             <tr>
-                <th>Id</th>
-                <th>Comision</th>
-                <th>actions</th>
+                <th>N°</th>
+                <th>Comisión</th>
+                <th>Opciones</th>
             </tr>
         </thead>
         <tbody>
         {% for cobro_anf in cobro_anfs %}
             <tr>
                 <td>{{ cobro_anf.id }}</td>
-                <td>{{ cobro_anf.comision }}</td>
-                <td>
-                    <a href="{{ path('cobro_anf_show', {'id': cobro_anf.id}) }}">show</a>
+                <td>$ {{ cobro_anf.comision }} </td>
+                 <td>
+                    <a href="{{ path('cobro_anf_show', {'id': cobro_anf.id}) }}">
+                    <button type="button" class="btn btn-info">Mirar</button></a>
                 </td>
             </tr>
         {% else %}
@@ -29,5 +38,6 @@
         {% endfor %}
         </tbody>
     </table>
-
+</div>
 {% endblock %}
+               

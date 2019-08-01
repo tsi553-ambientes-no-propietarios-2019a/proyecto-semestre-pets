@@ -45,6 +45,7 @@ class MascotaType extends AbstractType
             ])
             
             ->add('imageFile', VichImageType::class)
+            
         ;
     }
 
