@@ -5,18 +5,26 @@
 {% block body %}
     {{parent()}}
     <br>
+
         <div class="container">
             <h1 class="display-3 text-center">Registra tu mascota</h1>
+        <center>
+    <div>
+      <img src="{{ asset('img/mascota/cobAnf.jpg')}}" class="d-block w-50" alt="...">
+      </div>
+        </center>
             <br>
+            <div class="row justify-content-md-center">
             <div class="row">
-                <div class="col-md border-right">
+                <div class="col-md ">
                  {{ include('mascota/_form.html.twig') }}
                 </div>
-                <div class="col-sm-5">
-                
-                </div>
             </div>
-            <a href="{{ path('mascota_index') }}" class="btn btn-primary">Volver</a>
+            </div>
+            <div class="row">
+                <div class="col-md ">
+            <a href="{{ path('mascota_index') }}" class="btn btn-secondary">Volver</a>
         </div>
+        </div> 
 {% endblock %}
 
